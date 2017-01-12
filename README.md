@@ -5,7 +5,7 @@
 * Alex Lambert - @RhaydenX
 * Thomas Schmidt - @Tom5862
 * Phansa Chaonpoj - @phansieeex3
-* Evan Pernu
+* Evan Pernu - @EvanPernu
 * Todd Crane - @cranet
 
 ### Weekly Meetings
