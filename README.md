@@ -9,8 +9,8 @@
 * Todd Crane - @cranet
 
 ### Weekly Meetings
-<p> Minutes coming soon
-<p> Task matrices coming soon
+Minutes coming soon
+Task matrices coming soon
 
 ### Deliverables
 - [x] Team name (Buttermoss)
