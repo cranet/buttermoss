@@ -1,3 +1,3 @@
 class test():
-    def testMethod():
-        int abc = 0
+    def testMethod(self):
+        abc = 0
