@@ -1,6 +1,6 @@
 import unittest
 
-class TestAboutMethods():
+class TestAboutMethods(unittest.TestCase):
 
-    def test_about():
-        self.assertEqual()
+    def test_about(self):
+        self.assertEqual(1, 1, "hi")
