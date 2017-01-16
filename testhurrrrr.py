@@ -1,3 +1,4 @@
 class hurrr():
-    def abc():
-        print("hurr")
+    def abc(self):
+        print "hurr"
+        
