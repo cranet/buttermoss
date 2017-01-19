@@ -30,5 +30,5 @@ Task matrices coming soon
 - [x] Communication lines
 - [x] Github setup
 - [x] Website created
-- [ ] First Meeting
+- [x] First Meeting
 - [ ] Team email
