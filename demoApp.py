@@ -4,7 +4,7 @@ import tkMessageBox
 class Application(Tkinter.Frame):
 
     def aboutCallBack(self):
-        tkMessageBox.showinfo("Just BeWeave", "Alex Lambert - alamb25@uw.edu\n", "Thomas Schmidt - tom5862@uw.edu\n")
+        tkMessageBox.showinfo("Just BeWeave", "Alex Lambert - alamb25@uw.edu\nThomas Schmidt - tom5862@uw.edu\n")
 
     def createMenuBar(self):
         self.menuBar = Tkinter.Menu(self)
