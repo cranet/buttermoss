@@ -24,7 +24,7 @@ class Application(Tkinter.Frame):
         self.createWidgets()
 
 root = Tkinter.Tk()
-
+root.title("Just BeWeave")
 app = Application(master=root)
 app.mainloop()
 root.destroy()

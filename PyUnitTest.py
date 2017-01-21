@@ -1,11 +1,13 @@
 import unittest
+import Tkinter
 from demoApp import Application
 
 class TestApplication(unittest.TestCase):
 
     #Tests that the application runs
     def test_application(self):
-        demo_app = Application("Test")
+        root = Tkinter.Tk()
+        app = Application(root)
 
 #test from command line
 if __name__ == '__main__':
