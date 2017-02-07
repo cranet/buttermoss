@@ -25,10 +25,6 @@ Meeting 1 - 1/16/2017
 
 Task matrices coming soon
 
-### Deliverables
-- [x] Team name (Buttermoss)
-- [x] Communication lines
-- [x] Github setup
-- [x] Website created
-- [x] First Meeting
-- [ ] Team email
+### Documents
+https://drive.google.com/open?id=0B6yjXXxHlHV7SEU4eWRwSHJkc3M "Deliverable 0"
+https://drive.google.com/open?id=0B6yjXXxHlHV7TmRxU2ZDMENZTFE "Deliverable 1 - Functional Specification"
