@@ -8,6 +8,7 @@
 * Todd Crane - @cranet
 
 ### Weekly Meetings
+
 #### Meeting 0 - 1/10/2017
 * Everyone was present
 * Set up communications: we are using Slack and Discord
