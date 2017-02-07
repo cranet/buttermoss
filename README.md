@@ -1,5 +1,4 @@
 ## Welcome
-1/12/17
 
 ### Team
 * Alex Lambert - @RhaydenX
@@ -23,8 +22,6 @@ Meeting 1 - 1/16/2017
 * Reviewed GUI library
 * Reviewed GitHub for those unacquainted
 
-Task matrices coming soon
-
 ### Documents
-https://drive.google.com/open?id=0B6yjXXxHlHV7SEU4eWRwSHJkc3M "Deliverable 0"
-https://drive.google.com/open?id=0B6yjXXxHlHV7TmRxU2ZDMENZTFE "Deliverable 1 - Functional Specification"
+* https://drive.google.com/open?id=0B6yjXXxHlHV7SEU4eWRwSHJkc3M "Deliverable 0"
+* https://drive.google.com/open?id=0B6yjXXxHlHV7TmRxU2ZDMENZTFE "Deliverable 1 - Functional Specification"
