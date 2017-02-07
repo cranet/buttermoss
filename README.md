@@ -7,6 +7,10 @@
 * Evan Pernu - @EvanPernu
 * Todd Crane - @cranet
 
+### Documents
+* [Deliverable 0](https://drive.google.com/open?id=0B6yjXXxHlHV7SEU4eWRwSHJkc3M)
+* [Deliverable 1 - Functional Specification](https://drive.google.com/open?id=0B6yjXXxHlHV7TmRxU2ZDMENZTFE)
+
 ### Weekly Meetings
 
  #### Meeting 0 - 1/10/2017 
@@ -22,7 +26,3 @@
 * Reviewed unit testing
 * Reviewed GUI library
 * Reviewed GitHub for those unacquainted
-
-### Documents
-* [Deliverable 0](https://drive.google.com/open?id=0B6yjXXxHlHV7SEU4eWRwSHJkc3M)
-* [Deliverable 1 - Functional Specification](https://drive.google.com/open?id=0B6yjXXxHlHV7TmRxU2ZDMENZTFE)
