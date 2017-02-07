@@ -8,7 +8,7 @@
 * Todd Crane - @cranet
 
 ### Documents
-* [Deliverable 0](https://drive.google.com/open?id=0B6yjXXxHlHV7SEU4eWRwSHJkc3M)
+* [Deliverable 0 - User Stories and Business Directives](https://drive.google.com/open?id=0B6yjXXxHlHV7SEU4eWRwSHJkc3M)
 * [Deliverable 1 - Functional Specification](https://drive.google.com/open?id=0B6yjXXxHlHV7TmRxU2ZDMENZTFE)
 
 ### Weekly Meetings
