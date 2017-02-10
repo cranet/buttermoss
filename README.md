@@ -1,7 +1,8 @@
 ## Welcome
 
 ### Team
-* Alex Lambert - @RhaydenX
+* Alex Lambert - 
+@RhaydenX
 * Thomas Schmidt - @Tom5862
 * Phansa Chaonpoj - @phansieeex3
 * Evan Pernu - @EvanPernu
