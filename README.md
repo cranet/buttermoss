@@ -10,6 +10,7 @@
 ### Documents
 * [Deliverable 0 - User Stories and Business Directives](https://drive.google.com/open?id=0B6yjXXxHlHV7SEU4eWRwSHJkc3M)
 * [Deliverable 1 - Functional Specification](https://drive.google.com/open?id=0B6yjXXxHlHV7TmRxU2ZDMENZTFE)
+* [Deliverable 2 - UML Class Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7YVJEWVI5YmVEYTQ)
 
 ### Weekly Meetings
 
