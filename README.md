@@ -27,7 +27,3 @@
 * Reviewed unit testing
 * Reviewed GUI library
 * Reviewed GitHub for those unacquainted
-
-### Test
-@cranet
-hey @RhaydenX
