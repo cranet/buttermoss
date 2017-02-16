@@ -36,6 +36,7 @@
 * Revised our prototype
 
 #### Meeting 3 - 2/8/2017
+* Everyone was present
 * Discussed some small changes regarding semantics
 * Todd had part of the UML made pre-meeting, we collaboratively finished it
 * Fleshed out specific scenarios for some of our more obscure user stories (i.e. should a contestant make a new account to become a judge)
