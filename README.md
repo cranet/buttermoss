@@ -27,3 +27,16 @@
 * Reviewed unit testing
 * Reviewed GUI library
 * Reviewed GitHub for those unacquainted
+
+#### Meeting 2 - 1/26/2017
+* Everyone was present
+* Divided up workload for deliverable 1 and check-in 1
+* Discussed user roles and the addition of extra features
+* Decided on a template for our spec
+* Revised our prototype
+
+#### Meeting 3 - 2/8/2017
+* Discussed some small changes regarding semantics
+* Todd had part of the UML made pre-meeting, we collaboratively finished it
+* Fleshed out specific scenarios for some of our more obscure user stories (i.e. should a contestant make a new account to become a judge)
+* Deliverable 2
