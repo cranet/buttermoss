@@ -10,7 +10,7 @@
 ### Documents
 * [Deliverable 0 - User Stories and Business Directives](https://drive.google.com/open?id=0B6yjXXxHlHV7SEU4eWRwSHJkc3M)
 * [Deliverable 1 - Functional Specification](https://drive.google.com/open?id=0B6yjXXxHlHV7TmRxU2ZDMENZTFE)
-* [Deliverable 2 - UML Class Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7YVJEWVI5YmVEYTQ)
+* [Deliverable 2 - UML Class Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7SDk0Y0tqT1BDbTg)
 * [Deliverable 2 - GUI Class Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7Q1hFdUR6d1RXMEk)
 * [Deliverable 2 - Sequence Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7Z0JENERBT0ZXRXc)
 
