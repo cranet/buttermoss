@@ -8,11 +8,11 @@
 * Todd Crane - @cranet
 
 ### Documents
-* [Deliverable 0 - User Stories and Business Directives](https://drive.google.com/open?id=0B6yjXXxHlHV7SEU4eWRwSHJkc3M)
-* [Deliverable 1 - Functional Specification](https://drive.google.com/open?id=0B6yjXXxHlHV7TmRxU2ZDMENZTFE)
-* [Deliverable 2 - UML Class Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7SDk0Y0tqT1BDbTg)
-* [Deliverable 2 - GUI Class Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7Q1hFdUR6d1RXMEk)
-* [Deliverable 2 - Sequence Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7Z0JENERBT0ZXRXc)
+* [Deliverable 0 - User Stories and Business Directives](https://drive.google.com/open?id=0B6yjXXxHlHV7Qnh5M3N1U0xjWEk)
+* [Deliverable 1 - Functional Specification](https://drive.google.com/open?id=0B6yjXXxHlHV7bG5jTkR1NWFNM2M)
+* [Deliverable 2 - UML Class Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7ZFRfdGs1SExMU1U)
+* [Deliverable 2 - GUI Class Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7UmxkWDNqb2Zad3M)
+* [Deliverable 2 - Sequence Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7d2pXZ3VPZFdhV28)
 
 ### Weekly Meetings
 
