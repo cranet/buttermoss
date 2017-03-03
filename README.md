@@ -13,7 +13,7 @@
 * [Deliverable 2 - UML Class Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7ZFRfdGs1SExMU1U)
 * [Deliverable 2 - GUI Class Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7UmxkWDNqb2Zad3M)
 * [Deliverable 2 - Sequence Diagram](https://drive.google.com/open?id=0B6yjXXxHlHV7bklMcUNfMklpUk0)
-* [Deliverable 2 - DRAFT](https://drive.google.com/open?id=0B6yjXXxHlHV7TEV6RnMxMUpaSXM)
+* [Deliverable 2](https://drive.google.com/open?id=0B6yjXXxHlHV7NDBIUEtrZzZteDA)
 
 ### Weekly Meetings
 
