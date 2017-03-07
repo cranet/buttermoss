@@ -1,6 +1,13 @@
-from Tkinter import *
+""""Imports"""
+from Tkinter import Label
+from Tkinter import Entry
+from Tkinter import StringVar
+from Tkinter import Button
+from Tkinter import Tk
+
 import tkMessageBox
 
+"""Register GUI class"""
 class Register(object):
 
     def __init__(self):
@@ -31,13 +38,19 @@ class Register(object):
 
     
     def regClick(self):
+        
+        #Need non string exception
+
         #User input
-        input
-        self.label.configure(texdt=input)
+        input = self.entrytext.get()
+        self.label.configure(text=input)
+        
+        #Test 
+        print input
 
     def button_click(self, e):
+        #Send to database here
         pass
-
 
 
 Register()
