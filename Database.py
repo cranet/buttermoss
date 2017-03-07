@@ -1,5 +1,4 @@
 import sqlite3
-import os
 
 class Database(object):
     """ Author: Alex Lambert\n
@@ -25,21 +24,21 @@ class Database(object):
             Initializes tables insuserIDe the Databse"""
 
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS CONTESTANTS
-                            (userID INT PRIMARY KEY     NOT NULL,
+                            (USERID INT PRIMARY KEY     NOT NULL,
                             NAME                TEXT    NOT NULL,
                             EMAIL               TEXT    NOT NULL,
                             CATEGORIES          TEXT    NOT NULL);''')
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS JUDGES
-                            (userID INT PRIMARY KEY     NOT NULL,
+                            (USERID INT PRIMARY KEY     NOT NULL,
                             NAME                TEXT    NOT NULL,
                             EMAIL               TEXT    NOT NULL,
                             CATEGORIES          TEXT    NOT NULL);''')
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS ADMINS
-                            (userID INT PRIMARY KEY     NOT NULL,
+                            (USERID INT PRIMARY KEY     NOT NULL,
                             NAME                TEXT    NOT NULL,
                             EMAIL               TEXT    NOT NULL);''')
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS CATEGORIES
-                            (userID INT PRIMARY KEY     NOT NULL,
+                            (ID     INT PRIMARY KEY     NOT NULL,
                             NAME                TEXT    NOT NULL,
                             ABOUT               TEXT    NOT NULL,
                             START_TIME          TEXT    NOT NULL);''')
@@ -68,16 +67,16 @@ class Database(object):
             Date: 3/7/17\n
             Add contestant to the Database"""
 
-        self.cursor.execute("INSERT INTO CONTESTANTS (userID,NAME,EMAIL,CATEGORIES) \
+        self.cursor.execute("INSERT INTO CONTESTANTS (USERID,NAME,EMAIL,CATEGORIES) \
                             VALUES (?, ?, ?, ?)", entry)
 
-    def getContestant(self, useruserID):
+    def getContestant(self, userID):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
-            Gets contestant from the Database using unique userID"""
+            Gets contestant from the Database using unique user ID"""
 
-        temp = self.cursor.execute('SELECT * FROM CONTESTANTS WHERE userID=?', (useruserID,))
+        temp = self.cursor.execute('SELECT * FROM CONTESTANTS WHERE USERID=?', (userID,))
         toReturn = []
         for entry in temp:
             toReturn.append(entry[0])
@@ -86,7 +85,7 @@ class Database(object):
             toReturn.append(entry[3].split('/'))
         return toReturn
 
-    def getAllContestant(self):
+    def getAllContestants(self):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
@@ -100,14 +99,14 @@ class Database(object):
             toReturn.append([entry[0], entry[1], entry[2], tmp])
         return toReturn
 
-    def getAllContestantuserID(self):
+    def getAllContestantUserIDs(self):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
             Returns all contestants' unique userIDs from the Database"""
 
         toReturn = []
-        temp = self.cursor.execute('SELECT userID FROM contestants').fetchall()
+        temp = self.cursor.execute('SELECT USERID FROM CONTESTANTS').fetchall()
 
         for entry in temp:
             toReturn.append(entry[0])
@@ -121,7 +120,7 @@ class Database(object):
             Changes the contestant's categories list"""
 
         temp = [categories, userID]
-        self.cursor.execute('UPDATE CONTESTANTS set categories=? where userID=?', temp)
+        self.cursor.execute('UPDATE CONTESTANTS set CATEGORIES=? where USERID=?', temp)
 
     def removeContestant(self, userID):
         """ Author: Alex Lambert\n
@@ -130,16 +129,15 @@ class Database(object):
             Removes the contestant corresponding to the unique userIDs from the Database\n
             Used for when a contestant gets moved to being a Judge"""
 
-        self.conn.execute("DELETE FROM CONTESTANTS WHERE userID=?", (userID,))
+        self.conn.execute("DELETE FROM CONTESTANTS WHERE USERID=?", (userID,))
 
-    def addJudge(self, userID, name, email, categories):
+    def addJudge(self, entry):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
             Adds the judge to the database"""
 
-        thing = [userID, name, email, categories]
-        self.cursor.execute("INSERT INTO CONTESTANTS VALUES (?, ?, ?, ?)", thing)
+        self.cursor.execute("INSERT INTO JUDGES VALUES (?, ?, ?, ?)", entry)
 
     def getJudge(self, userID):
         """ Author: Alex Lambert\n
@@ -147,15 +145,57 @@ class Database(object):
             Date: 3/7/17\n
             Returns the judge from the Database using the unique id"""
 
-        self.cursor.execute('SELECT userID, name, email, categories\
-                            FROM CONTESTANTS WHERE userID=?', (userID,))
-        return self.cursor.fetchone()
+        temp = self.cursor.execute('SELECT * FROM JUDGES WHERE USERID=?', (userID,))
+        toReturn = []
+        for entry in temp:
+            toReturn.append(entry[0])
+            toReturn.append(entry[1])
+            toReturn.append(entry[2])
+            toReturn.append(entry[3].split('/'))
+        return toReturn
+
+    def getAllJudges(self):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Returns all judges from the Database"""
+
+        toReturn = []
+        temp = self.cursor.execute('SELECT * FROM JUDGES')
+
+        for entry in temp:
+            tmp = entry[3].split('/')
+            toReturn.append([entry[0], entry[1], entry[2], tmp])
+        return toReturn
+
+    def getAllJudgesUserIDs(self):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Returns all judges' unique userIDs from the Database"""
+
+        toReturn = []
+        temp = self.cursor.execute('SELECT USERID FROM JUDGES').fetchall()
+
+        for entry in temp:
+            toReturn.append(entry[0])
+        return set(toReturn)
+
+    def modifyJudge(self, userID, categories):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Modifies existing Judge using the unique userID\n
+            Changes the judge's categories list"""
+
+        temp = [categories, userID]
+        self.cursor.execute('UPDATE JUDGES set CATEGORIES=? where USERID=?', temp)
 
     def removeJudge(self, userID):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
-            Returns all contestants from the Database"""
+            Removes the judge from the Database"""
 
-        self.conn.execute("DELETE FROM CONTESTANTS WHERE userID=?", (userID,))
+        self.conn.execute("DELETE FROM JUDGES WHERE USERID=?", (userID,))
 
