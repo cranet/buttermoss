@@ -1,33 +1,54 @@
-class User:
+import random
+
+"""User Class"""
+class User(object):
     """User Class"""
 
-    def __init__(self, name, userID, email):
+    """Database"""
+    database = []
+
+    def __init__(self, name, email):
         """Constructor"""
         self.name = name
-        self.userID = userID
         self.email = email
 
-   
-    def viewCategories():
-        """Takes user to categories page"""
-        pass
-
-
-    def viewJudges():
-        """Takes user to judges page"""
-        pass
+        #Generate unique ID
+        self.userID = self.generateID()
+        print self.userID
 
     
-    def viewSchedule():
-        """Takes user to schedule page"""
+    def generateID(self):
+        """Generates a unique 5 digit user ID"""
+        result = random.randint(10000, 99999)
+        print result
+        return result
+        #return 0
+        
+
+    def getCategories(self):
+        """Database call for categories list"""
+        pass
+
+
+    def getJudges():
+        """Database call for judges list"""
+        pass
+
+    def getSchedule():
+        """Database call for schedule list"""
         pass
 
 
     def register():
-        """Takes user to register page"""
+        """New user registration"""
         pass
 
 
     def uploadPicture():
-        """Brings up the upload picture window"""
+        """A"""
         pass
+
+def main():
+    a = User("abc.com", "abc")
+
+main()
