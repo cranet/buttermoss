@@ -8,13 +8,15 @@ class Contestant(User):
         """Constructor"""
 
         #Create contestant
-        self = User("abc", "abc.com")
+        self = User("Bobby", "bobbob@uderwaterbasketweaving.com")
 
         #Add contestant to database
         self.database.addContestant(self.userID, self.name, self.email, "")
 
-        print self.database.getContestant(self.userID)
-
+        
+        a = self.database.getContestant(self.userID)
+        for x in a:
+            print x
 
     def regCategory(self):
         """Registers contestant in chosen category"""

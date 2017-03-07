@@ -12,7 +12,7 @@ class User(object):
         """Constructor"""
         self.name = name
         self.email = email
-        self.database.intializeTables()
+        self.database
 
         #Generate unique ID
         self.userID = self.generateID()
