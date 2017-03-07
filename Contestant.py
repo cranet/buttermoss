@@ -2,6 +2,9 @@
 class Contestant(object):
     """Contestant class"""
 
+    def __init__(self):
+        """Constructor"""
+
     def regCategory(self):
         """Registers contestant in chosen category"""
         pass
