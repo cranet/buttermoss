@@ -1,9 +1,20 @@
+from User import *
+
 """Contestant class"""
-class Contestant(object):
+class Contestant(User):
     """Contestant class"""
 
     def __init__(self):
         """Constructor"""
+
+        #Create contestant
+        self = User("abc", "abc.com")
+
+        #Add contestant to database
+        self.database.addContestant(self.userID, self.name, self.email, "")
+
+        print self.database.getContestant(self.userID)
+
 
     def regCategory(self):
         """Registers contestant in chosen category"""

@@ -1,16 +1,18 @@
 import random
+from Database import *
 
 """User Class"""
 class User(object):
     """User Class"""
 
     """Database"""
-    database = []
+    database = Database()
 
     def __init__(self, name, email):
         """Constructor"""
         self.name = name
         self.email = email
+        self.database.intializeTables()
 
         #Generate unique ID
         self.userID = self.generateID()
