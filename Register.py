@@ -5,26 +5,33 @@ class Register(object):
 
     """Register GUI class constructor"""
     def __init__(self):
-        #Set up window
+
+        #Window
         self.root = Tk.Tk()
         self.root.wm_title("Register")
 
-        #Text box label
+        #Name label
         self.label = Tk.Label(self.root, text="Enter Name")
+        self.nameText = Tk.StringVar()
         self.label.pack()
+        Tk.Entry(self.root, textvariable=self.nameText).pack()
 
-        #Set up user input
-        self.entrytext = Tk.StringVar()
-        Tk.Entry(self.root, textvariable=self.entrytext).pack()
+        #Email label
+        self.label = Tk.Label(self.root, text="Enter Email")
+        self.emailText = Tk.StringVar()
+        self.label.pack()
+        Tk.Entry(self.root, textvariable=self.emailText).pack()
 
         #Set up register button
         self.buttontext = Tk.StringVar()
         self.buttontext.set("Register")
         Tk.Button(self.root, textvariable=self.buttontext, command=self.regClick).pack()
 
-        #
-        self.label = Tk.Label(self.root, text="")
-        self.label.pack()
+        #Textboxes
+        self.nameLabel = Tk.Label(self.root, text="")
+        self.emailLabel = Tk.Label(self.root, text="")
+        self.nameLabel.pack()
+        self.emailLabel.pack()
 
         #
         self.root.mainloop()
@@ -36,11 +43,14 @@ class Register(object):
 
         #User input
         #Overrides default input
-        name = self.entrytext.get()
-        self.label.configure(text=name)
+        name = self.nameText.get()
+        email = self.emailText.get()
+        self.nameLabel.configure(text=name)
+        self.emailLabel.configure(text=email)
 
         #Test input
         print name
+        print email
 
     def button_click(self):
         """Button click sends to database"""
