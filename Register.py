@@ -1,36 +1,29 @@
-""""Imports"""
-from Tkinter import Label
-from Tkinter import Entry
-from Tkinter import StringVar
-from Tkinter import Button
-from Tkinter import Tk
+""""Register GUI class"""
+import Tkinter as Tk
 
-#import tkMessageBox
-
-"""Register GUI class"""
 class Register(object):
 
     """Register GUI class constructor"""
     def __init__(self):
         #Set up window
-        self.root = Tk()
+        self.root = Tk.Tk()
         self.root.wm_title("Register")
 
         #Text box label
-        self.label = Label(self.root, text="Enter Name")
+        self.label = Tk.Label(self.root, text="Enter Name")
         self.label.pack()
 
         #Set up user input
-        self.entrytext = StringVar()
-        Entry(self.root, textvariable=self.entrytext).pack()
+        self.entrytext = Tk.StringVar()
+        Tk.Entry(self.root, textvariable=self.entrytext).pack()
 
         #Set up register button
-        self.buttontext = StringVar()
+        self.buttontext = Tk.StringVar()
         self.buttontext.set("Register")
-        Button(self.root, textvariable=self.buttontext, command=self.regClick).pack()
+        Tk.Button(self.root, textvariable=self.buttontext, command=self.regClick).pack()
 
         #
-        self.label = Label(self.root, text="")
+        self.label = Tk.Label(self.root, text="")
         self.label.pack()
 
         #
@@ -43,11 +36,11 @@ class Register(object):
 
         #User input
         #Overrides default input
-        input = self.entrytext.get()
-        self.label.configure(text=input)
+        name = self.entrytext.get()
+        self.label.configure(text=name)
 
         #Test input
-        print input
+        print name
 
     def button_click(self):
         """Button click sends to database"""
