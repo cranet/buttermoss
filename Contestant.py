@@ -7,6 +7,8 @@ class Contestant(User):
     def __init__(self):
         """Constructor"""
 
+        #Category array
+
         #Create contestant
         self = User("Bobby", "bobbob@uderwaterbasketweaving.com")
 
@@ -24,15 +26,12 @@ class Contestant(User):
 
     def dropCategory(self):
         """Drops contestant from chosen category"""
+
+        #Modify internal list
+        #Send userID and modified list
+        
         pass
 
-    def requestJudge(self):
-        """Marks the contestant as possible judge"""
-        pass
-
-    def uploadPicture(self):
-        """Uploads contestant picture"""
-        pass
 
 """Main"""
 if __name__ == '__main__':
