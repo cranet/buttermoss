@@ -14,8 +14,9 @@ class Contestant(User):
 
         #Add contestant to database
         temp = [self.userID, self.name, self.email, ""] #Modified by Alex 3/7/17
-        self.database.addContestant(temp)               #fixed how contestants are added to db
+        self.database.addContestant(temp)               #Fixed how contestants are added to db
 
+        #Print contestant info
         a = self.database.getContestant(self.userID)
         for x in a:
             print x
