@@ -30,24 +30,25 @@ class User(object):
         pass
 
 
-    def getJudges():
+    def getJudges(self):
         """Database call for judges list"""
         pass
 
-    def getSchedule():
+    def getSchedule(self):
         """Database call for schedule list"""
         pass
 
 
-    def register():
+    def register(self):
         """New user registration"""
         pass
 
-
+    """
     def uploadPicture():
         """A"""
         pass
+        """
 
-
+"""Main"""
 if __name__ == '__main__':
-    a = User("abc.com", "abc")
+    test = User("abc.com", "abc")
