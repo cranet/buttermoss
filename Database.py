@@ -1,4 +1,5 @@
 import sqlite3
+import random
 
 class Database(object):
     """ Author: Alex Lambert\n
@@ -67,6 +68,11 @@ class Database(object):
             Date: 3/7/17\n
             Add contestant to the Database"""
 
+        newID = random.randint(10000, 99999)
+        temp = self.getAllContestantUserIDs()
+        while newID in temp:
+            newID = random.randint(10000, 99999)
+        entry.insert(0, newID)
         self.cursor.execute("INSERT INTO CONTESTANTS (USERID,NAME,EMAIL,CATEGORIES) \
                             VALUES (?, ?, ?, ?)", entry)
 

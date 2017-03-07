@@ -1,6 +1,8 @@
 """"Register GUI class"""
 import Tkinter as Tk
+from Database import *
 
+db = Database() #added by Alex Lambert 3/7/17
 class Register(object):
 
     """Register GUI class constructor"""
@@ -47,10 +49,20 @@ class Register(object):
         email = self.emailText.get()
         self.nameLabel.configure(text=name)
         self.emailLabel.configure(text=email)
-
+        self.sendToDatabase(name, email) #added by Alex Lambert 3/7/17
+        db.commit()
         #Test input
         print name
         print email
+
+    def sendToDatabase(self, name, email):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Add contestant to the Database"""
+
+        entry = [name, email, '']
+        db.addContestant(entry)
 
     def button_click(self):
         """Button click sends to database"""
