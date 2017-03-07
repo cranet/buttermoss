@@ -13,9 +13,9 @@ class Contestant(User):
         self = User("Bobby", "bobbob@uderwaterbasketweaving.com")
 
         #Add contestant to database
-        self.database.addContestant(self.userID, self.name, self.email, "")
+        temp = [self.userID, self.name, self.email, ""] #Modified by Alex 3/7/17
+        self.database.addContestant(temp)               #fixed how contestants are added to db
 
-        
         a = self.database.getContestant(self.userID)
         for x in a:
             print x
