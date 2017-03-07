@@ -1,4 +1,5 @@
 import sqlite3
+import os
 
 class Database(object):
 
@@ -6,6 +7,8 @@ class Database(object):
 
         self.conn = sqlite3.connect('example.db')
         self.cursor = self.conn.cursor()
+        if not os.path.isfile('example.db'):
+            self.intializeTables()
 
     def intializeTables(self):
         self.cursor.execute('''CREATE TABLE CONTESTANTS
@@ -76,26 +79,3 @@ class Database(object):
 
     def closeDB(self):
         self.conn.close()
-
-test = Database()
-# test.intializeTables()
-# test.addContestant(12345, 'Toad', 'cranet@uw.edu', 'NONE')
-# test.addContestant(12890, 'Caleb', 'caleb447@uw.edu', 'NONE')
-# test.addContestant(01025, 'Alex', 'alamb25@uw.edu', 'NONE')
-# hi = test.getContestant(12345)
-# for i in hi:
-#     print i[1]
-# test.commit()
-# test.removeContestant('12345')
-# test.commit()
-# test.addContestant('12345', 'Toad', 'cranet@uw.edu', 'NONE')
-# hi = test.getContestant('12345')
-# print hi
-# test.modifyContestant('12345', ['1236', '1942'])
-# hi = test.getContestant('12345')
-# thing = []
-thing = set(test.getAllContestantID())
-for cont in thing:
-    print cont[0]
-# print hi
-test.closeDB()
