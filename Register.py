@@ -5,13 +5,13 @@ from Tkinter import StringVar
 from Tkinter import Button
 from Tkinter import Tk
 
-import tkMessageBox
+#import tkMessageBox
 
 """Register GUI class"""
 class Register(object):
 
+    """Register GUI class constructor"""
     def __init__(self):
-        
         #Set up window
         self.root = Tk()
         self.root.wm_title("Register")
@@ -36,19 +36,22 @@ class Register(object):
         #
         self.root.mainloop()
 
-    
+
     def regClick(self):
-        
+        """Gets the user input"""
         #Need non string exception
 
         #User input
+        #Overrides default input
         input = self.entrytext.get()
         self.label.configure(text=input)
-        
-        #Test 
+
+        #Test input
         print input
 
-    def button_click(self, e):
+    def button_click(self):
+        """Button click sends to database"""
+
         #Send to database here
         pass
 
