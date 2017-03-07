@@ -14,15 +14,14 @@ class User(object):
 
         #Generate unique ID
         self.userID = self.generateID()
-        print self.userID
+        #print self.userID
 
     
     def generateID(self):
         """Generates a unique 5 digit user ID"""
         result = random.randint(10000, 99999)
-        print result
+        #print result
         return result
-        #return 0
         
 
     def getCategories(self):
@@ -45,7 +44,6 @@ class User(object):
 
     """
     def uploadPicture():
-        """A"""
         pass
         """
 
