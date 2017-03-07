@@ -48,7 +48,6 @@ class User(object):
         """A"""
         pass
 
-def main():
-    a = User("abc.com", "abc")
 
-main()
+if __name__ == '__main__':
+    a = User("abc.com", "abc")
