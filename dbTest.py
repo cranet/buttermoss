@@ -89,10 +89,10 @@ def testCategorieDB(testDB):
     temp = testDB.getCategorie(tmp)
     print temp[0], temp[1], temp[2], temp[3]
 
-    # print '\n===MODIFY CATEGORIE TEST==='
-    # testDB.modifyCategorie(tmp, 'NONE/THREE')
-    # temp = testDB.getCategorie(tmp)
-    # print temp[0], temp[1], temp[2], ' '.join(temp[3])
+    print '\n===MODIFY CATEGORIE TEST==='
+    testDB.modifyCategorie(tmp, ['Under Water Basket Weaving', 'even more fun', '12:30pm'])
+    temp = testDB.getCategorie(tmp)
+    print temp[0], temp[1], temp[2], temp[3]
 
     print '\n===GET ALL CATEGORIE TEST==='
     temp = testDB.getAllCategories()

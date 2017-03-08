@@ -327,14 +327,17 @@ class Database(object):
             toReturn.append(entry[0])
         return toReturn
 
-    def modifyCategorie(self, newEntry):
+    def modifyCategorie(self, id, newEntry):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
             Modifies existing Categorie using the unique ID\n"""
-
+        # newEntry.insert(0, id)
         # temp = [categories, userID]
-        self.cursor.execute('UPDATE CATEGORIES set CATEGORIES=? where USERID=?', temp)
+        self.cursor.execute("UPDATE CATEGORIES set NAME=? where ID=?", [newEntry[0], id])
+        self.cursor.execute("UPDATE CATEGORIES set ABOUT=? where ID=?", [newEntry[1], id])
+        self.cursor.execute("UPDATE CATEGORIES set START_TIME=? where ID=?", [newEntry[2], id])
+
 
     def removeCategorie(self, id):
         """ Author: Alex Lambert\n
