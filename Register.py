@@ -52,6 +52,8 @@ class Register(object):
 
         self.sendToDatabase(name, email)    #added by Alex Lambert 3/7/17
         DATABASE.commit()                   #added by Alex Lambert 3/7/17
+        DATABASE.closeDB()                  #added by Alex Lambert 3/7/17
+        self.root.destroy()                 #added by Alex Lambert 3/7/17 For Demo
         #Test input
         # print name
         # print email
