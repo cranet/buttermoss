@@ -18,7 +18,8 @@ class Database(object):
         self.intializeTables()
         self.idList = (self.getAllContestantUserIDs() +
                        self.getAllJudgesUserIDs() +
-                       self.getAllAdminsUserIDs())
+                       self.getAllAdminsUserIDs() +
+                       self.getAllCategoriesIDs)
 
 
     def intializeTables(self):
@@ -141,16 +142,17 @@ class Database(object):
             Used for when a contestant gets moved to being a Judge"""
 
         self.conn.execute("DELETE FROM CONTESTANTS WHERE USERID=?", (userID,))
+        self.idList.remove(userID)
 
     def addJudge(self, entry):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
             Adds the judge to the database"""
-
-        newID = random.randint(10000, 99999)
-        while newID in self.idList:
-            newID = random.randint(10000, 99999)
+        
+        # newID = random.randint(10000, 99999)
+        # while newID in self.idList:
+        #     newID = random.randint(10000, 99999)
         entry.insert(0, newID)
         self.cursor.execute("INSERT INTO JUDGES VALUES (?, ?, ?, ?)", entry)
 
@@ -215,6 +217,7 @@ class Database(object):
             Removes the judge from the Database"""
 
         self.conn.execute("DELETE FROM JUDGES WHERE USERID=?", (userID,))
+        self.idList.remove(userID)
 
     def addAdmin(self, entry):
         """ Author: Alex Lambert\n
@@ -278,12 +281,13 @@ class Database(object):
             Might not be used"""
 
         self.conn.execute("DELETE FROM ADMINS WHERE USERID=?", (userID,))
+        self.idList.remove(userID)
 
     def addCategory(self, entry):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
-            Add Categorie to the Database"""
+            Add Category to the Database"""
 
         newID = random.randint(10000, 99999)
         while newID in self.idList:
@@ -297,7 +301,7 @@ class Database(object):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
-            Gets the Categorie from the Database using unique user ID"""
+            Gets the Category from the Database using unique user ID"""
 
         temp = self.cursor.execute('SELECT * FROM CATEGORIES WHERE ID=?', (id,))
         toReturn = []
@@ -338,7 +342,7 @@ class Database(object):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
-            Modifies existing Categorie using the unique ID\n"""
+            Modifies existing Category using the unique ID\n"""
         # newEntry.insert(0, id)
         # temp = [categories, userID]
         self.cursor.execute("UPDATE CATEGORIES set NAME=? where ID=?", [newEntry[0], id])
@@ -350,7 +354,8 @@ class Database(object):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
-            Removes the categorie corresponding to the unique userIDs from the Database\n"""
+            Removes the category corresponding to the unique userIDs from the Database\n"""
 
         self.conn.execute("DELETE FROM CATEGORIES WHERE ID=?", (id,))
+        self.idList.remove(id)
     
