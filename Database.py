@@ -15,14 +15,18 @@ class Database(object):
 
         self.conn = sqlite3.connect('example.db')
         self.cursor = self.conn.cursor()
-
         self.intializeTables()
+        self.usedIDs = set(self.getAllContestantUserIDs() +
+                           self.getAllJudgesUserIDs() +
+                           self.getAllAdminsUserIDs())
+
+        
 
     def intializeTables(self):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
-            Initializes tables insuserIDe the Databse"""
+            Initializes tables insuserIDe the Database"""
 
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS CONTESTANTS
                             (USERID INT PRIMARY KEY     NOT NULL,
@@ -69,13 +73,10 @@ class Database(object):
             Add contestant to the Database"""
 
         newID = random.randint(10000, 99999)
-        temp = self.getAllContestantUserIDs()
-        while newID in temp:
+        while newID in self.usedIDs:
             newID = random.randint(10000, 99999)
         entry.insert(0, newID)
-        print entry[1]
-        self.cursor.execute("INSERT INTO CONTESTANTS (USERID,NAME,EMAIL,CATEGORIES) \
-                            VALUES (?, ?, ?, ?)", entry)
+        self.cursor.execute("INSERT INTO CONTESTANTS VALUES (?, ?, ?, ?)", entry)
 
     def getContestant(self, userID):
         """ Author: Alex Lambert\n
@@ -117,7 +118,7 @@ class Database(object):
 
         for entry in temp:
             toReturn.append(entry[0])
-        return set(toReturn)
+        return toReturn
 
     def modifyContestant(self, userID, categories):
         """ Author: Alex Lambert\n
@@ -144,6 +145,10 @@ class Database(object):
             Date: 3/7/17\n
             Adds the judge to the database"""
 
+        newID = random.randint(10000, 99999)
+        while newID in self.usedIDs:
+            newID = random.randint(10000, 99999)
+        entry.insert(0, newID)
         self.cursor.execute("INSERT INTO JUDGES VALUES (?, ?, ?, ?)", entry)
 
     def getJudge(self, userID):
@@ -186,7 +191,7 @@ class Database(object):
 
         for entry in temp:
             toReturn.append(entry[0])
-        return set(toReturn)
+        return toReturn
 
     def modifyJudge(self, userID, categories):
         """ Author: Alex Lambert\n
@@ -213,6 +218,10 @@ class Database(object):
             Adds the admin to the database
             USED FOR HARDCODED"""
 
+        newID = random.randint(10000, 99999)
+        while newID in self.usedIDs:
+            newID = random.randint(10000, 99999)
+        entry.insert(0, newID)
         self.cursor.execute("INSERT INTO ADMINS VALUES (?, ?, ?)", entry)
 
     def getAdmin(self, userID):
@@ -254,7 +263,7 @@ class Database(object):
 
         for entry in temp:
             toReturn.append(entry[0])
-        return set(toReturn)
+        return toReturn
 
     def removeAdmin(self, userID):
         """ Author: Alex Lambert\n
@@ -263,4 +272,77 @@ class Database(object):
             Removes the judge from the Database
             Might not be used"""
 
-        self.conn.execute("DELETE FROM ADMIN WHERE USERID=?", (userID,))
+        self.conn.execute("DELETE FROM ADMINS WHERE USERID=?", (userID,))
+
+    def addCategorie(self, entry):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Add Categorie to the Database"""
+
+        newID = random.randint(10000, 99999)
+        while newID in self.usedIDs:
+            newID = random.randint(10000, 99999)
+        entry.insert(0, newID)
+        self.cursor.execute("INSERT INTO CATEGORIES VALUES (?, ?, ?, ?)", entry)
+
+    def getCategorie(self, id):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Gets the Categorie from the Database using unique user ID"""
+
+        temp = self.cursor.execute('SELECT * FROM CATEGORIES WHERE ID=?', (id,))
+        toReturn = []
+        for entry in temp:
+            toReturn.append(entry[0])
+            toReturn.append(entry[1])
+            toReturn.append(entry[2])
+            toReturn.append(entry[3])
+        return toReturn
+
+    def getAllCategories(self):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Returns all Categories from the Database"""
+
+        toReturn = []
+        temp = self.cursor.execute('SELECT * FROM CATEGORIES')
+
+        for entry in temp:
+            toReturn.append([entry[0], entry[1], entry[2], entry[3]])
+        return toReturn
+
+    def getAllCategoriesIDs(self):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Returns all Categories' unique IDs from the Database"""
+
+        toReturn = []
+        temp = self.cursor.execute('SELECT ID FROM CATEGORIES').fetchall()
+
+        for entry in temp:
+            toReturn.append(entry[0])
+        return toReturn
+
+    def modifyCategorie(self, newEntry):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Modifies existing Categorie using the unique ID\n"""
+
+        # temp = [categories, userID]
+        self.cursor.execute('UPDATE CATEGORIES set CATEGORIES=? where USERID=?', temp)
+
+    def removeCategorie(self, id):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Removes the categorie corresponding to the unique userIDs from the Database\n"""
+
+        self.conn.execute("DELETE FROM CATEGORIES WHERE ID=?", (id,))
+    
+    
+    
