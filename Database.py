@@ -7,18 +7,18 @@ class Database(object):
         Date: 3/7/17\n
         Database object that holds information about events"""
 
-    def __init__(self):
+    def __init__(self, dbName='Database.db'):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
             Constructor"""
 
-        self.conn = sqlite3.connect('example.db')
+        self.conn = sqlite3.connect(dbName)
         self.cursor = self.conn.cursor()
         self.intializeTables()
-        self.idList = set(self.getAllContestantUserIDs() +
-                          self.getAllJudgesUserIDs() +
-                          self.getAllAdminsUserIDs())
+        self.idList = (self.getAllContestantUserIDs() +
+                       self.getAllJudgesUserIDs() +
+                       self.getAllAdminsUserIDs())
 
 
     def intializeTables(self):
@@ -65,7 +65,7 @@ class Database(object):
 
         self.conn.close()
 
-    def addContestant(self, entry):
+    def addContestant(self, entry, key=0):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
@@ -76,6 +76,7 @@ class Database(object):
         while newID in self.idList:
             newID = random.randint(10000, 99999)
         entry.insert(0, newID)
+        self.idList.append(newID)
         self.cursor.execute("INSERT INTO CONTESTANTS VALUES (?, ?, ?, ?)", entry)
 
         return newID

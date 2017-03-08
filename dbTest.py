@@ -1,3 +1,4 @@
+import os
 from Database import *
 
 def testContestantDB(testDB):
@@ -135,9 +136,15 @@ def testAdminDB(testDB):
 
 #Tests functions of Database.py
 if __name__ == '__main__':
-    db = Database()
+    db = Database('Demo.db')
     testContestantDB(db)
     testJudgeDB(db)
     testAdminDB(db)
     testCategoryDB(db)
+    #close and get rid of database
+    db.closeDB()
+    try:
+        os.remove('Demo.db')
+    except OSError:
+        pass
 
