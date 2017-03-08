@@ -19,7 +19,7 @@ class Database(object):
         self.idList = (self.getAllContestantUserIDs() +
                        self.getAllJudgesUserIDs() +
                        self.getAllAdminsUserIDs() +
-                       self.getAllCategoriesIDs)
+                       self.getAllCategoriesIDs())
 
 
     def intializeTables(self):
@@ -141,22 +141,26 @@ class Database(object):
             Removes the contestant corresponding to the unique userIDs from the Database\n
             Used for when a contestant gets moved to being a Judge"""
 
-        self.conn.execute("DELETE FROM CONTESTANTS WHERE USERID=?", (userID,))
-        self.idList.remove(userID)
+        if userID in self.idList:
+            self.conn.execute("DELETE FROM CONTESTANTS WHERE USERID=?", (userID,))
+            self.idList.remove(userID)
 
-    def addJudge(self, entry):
+    def addJudge(self, entry, userID=0):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
             Adds the judge to the database"""
-        
-        # newID = random.randint(10000, 99999)
-        # while newID in self.idList:
-        #     newID = random.randint(10000, 99999)
-        entry.insert(0, newID)
+
+        if userID < 10000:
+            newID = random.randint(10000, 99999)
+            while newID in self.idList:
+                newID = random.randint(10000, 99999)
+            entry.insert(0, newID)
+            userID = newID
+        self.idList.append(userID)
         self.cursor.execute("INSERT INTO JUDGES VALUES (?, ?, ?, ?)", entry)
 
-        return newID
+        return userID
 
     def getJudge(self, userID):
         """ Author: Alex Lambert\n
@@ -230,6 +234,7 @@ class Database(object):
         while newID in self.idList:
             newID = random.randint(10000, 99999)
         entry.insert(0, newID)
+        self.idList.append(newID)
         self.cursor.execute("INSERT INTO ADMINS VALUES (?, ?, ?)", entry)
 
     def getAdmin(self, userID):
@@ -293,6 +298,7 @@ class Database(object):
         while newID in self.idList:
             newID = random.randint(10000, 99999)
         entry.insert(0, newID)
+        self.idList.append(newID)
         self.cursor.execute("INSERT INTO CATEGORIES VALUES (?, ?, ?, ?)", entry)
 
         return newID
