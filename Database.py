@@ -66,7 +66,7 @@ class Database(object):
 
         self.conn.close()
 
-    def addContestant(self, entry, key=0):
+    def addContestant(self, entry):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
@@ -76,8 +76,10 @@ class Database(object):
         newID = random.randint(10000, 99999)
         while newID in self.idList:
             newID = random.randint(10000, 99999)
+
         entry.insert(0, newID)
         self.idList.append(newID)
+        entry[3] = '/'.join(entry[3])
         self.cursor.execute("INSERT INTO CONTESTANTS VALUES (?, ?, ?, ?)", entry)
 
         return newID
@@ -157,6 +159,8 @@ class Database(object):
                 newID = random.randint(10000, 99999)
             entry.insert(0, newID)
             userID = newID
+
+        entry[3] = '/'.join(entry[3])
         self.idList.append(userID)
         self.cursor.execute("INSERT INTO JUDGES VALUES (?, ?, ?, ?)", entry)
 

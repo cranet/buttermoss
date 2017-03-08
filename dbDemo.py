@@ -4,9 +4,9 @@ from Database import *
 def testContestantDB(testDB):
     """ Test the Contestant Databse functions"""
 
-    testDB.addContestant(['Toad', 'cranet@uw.edu', 'NONE'])
-    testDB.addContestant(['Alex', 'alamb25@uw.edu', 'NONE/ONE/TWO'])
-    testDB.addContestant(['Caleb', 'caleb447@uw.edu', 'NONE/TWO'])
+    testDB.addContestant(['Toad', 'cranet@uw.edu', ['NONE']])
+    testDB.addContestant(['Alex', 'alamb25@uw.edu', ['NONE' 'ONE ONE', 'TWO']])
+    testDB.addContestant(['Caleb', 'caleb447@uw.edu', ['NONE', 'TWO', 'FOUR']])
 
     print '\n===GET ALL CONTESTANT IDs TEST==='
     temp = testDB.getAllContestantUserIDs()
@@ -38,12 +38,16 @@ def testContestantDB(testDB):
 def testJudgeDB(testDB):
     """ Test the Judge Databse functions"""
 
-    testDB.addJudge(['Toad', 'cranet@uw.edu', 'NONE'])
-    testDB.addJudge(['Alex', 'alamb25@uw.edu', 'NONE/ONE/TWO'])
-    testDB.addJudge(['Caleb', 'caleb447@uw.edu', 'NONE/TWO'])
-    contestantID = testDB.addContestant(['Connor', 'concox@uw.edu', 'ONE'])
+    testDB.addJudge(['Toad', 'cranet@uw.edu', ['NONE']])
+    testDB.addJudge(['Alex', 'alamb25@uw.edu', ['NONE', 'ONE, TWO']])
+    testDB.addJudge(['Caleb', 'caleb447@uw.edu', ['NONE', 'TWO', 'FOUR']])
+
+    #how to move a contestant to a Judge
+    #make sure to remove Contestant before adding Judge
+    contestantID = testDB.addContestant(['Connor', 'concox@uw.edu', ['ONE', 'FOUR']])
+    newJudge = testDB.getContestant(contestantID)
     testDB.removeContestant(contestantID)
-    testDB.addJudge([contestantID, 'Connor', 'concox@uw.edu', 'ONE'], contestantID)
+    testDB.addJudge(newJudge, contestantID)
 
     print '\n===GET ALL JUDGE IDs TEST==='
     temp = testDB.getAllJudgesUserIDs()

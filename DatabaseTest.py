@@ -11,8 +11,8 @@ class DatabaseContestantTest(unittest.TestCase):
 
     def setUp(self):
         self.keys = []
-        self.keys.insert(0, TEST_DATABASE.addContestant(['Alex', 'alamb25@uw.edu', 'NONE']))
-        self.keys.insert(1, TEST_DATABASE.addContestant(['Toad', 'cranet@uw.edu', 'ONE/TWO']))
+        self.keys.insert(0, TEST_DATABASE.addContestant(['Alex', 'alamb25@uw.edu', ['NONE']]))
+        self.keys.insert(1, TEST_DATABASE.addContestant(['Toad', 'cranet@uw.edu', ['ONE', 'TWO']]))
         TEST_DATABASE.commit()
 
     def tearDown(self):
@@ -110,7 +110,7 @@ class DatabaseContestantTest(unittest.TestCase):
         uniqueDB = Database('Many.db')
 
         for i in range(10000):
-            self.assertTrue(uniqueDB.addContestant(['', '', ''], 'Failed'))
+            self.assertTrue(uniqueDB.addContestant(['', '', '']), 'Failed')
 
         #close and get rid of database
         uniqueDB.closeDB()
