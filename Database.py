@@ -205,3 +205,62 @@ class Database(object):
 
         self.conn.execute("DELETE FROM JUDGES WHERE USERID=?", (userID,))
 
+    def addAdmin(self, entry):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Adds the admin to the database
+            USED FOR HARDCODED"""
+
+        self.cursor.execute("INSERT INTO ADMINS VALUES (?, ?, ?)", entry)
+
+    def getAdmin(self, userID):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Returns the Admin from the Database using the unique id"""
+
+        temp = self.cursor.execute('SELECT * FROM ADMINS WHERE USERID=?', (userID,))
+        toReturn = []
+        for entry in temp:
+            toReturn.append(entry[0])
+            toReturn.append(entry[1])
+            toReturn.append(entry[2])
+        return toReturn
+
+    def getAllAdmins(self):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Returns all Admins from the Database
+            Might not be used"""
+
+        toReturn = []
+        temp = self.cursor.execute('SELECT * FROM ADMINS')
+
+        for entry in temp:
+            toReturn.append([entry[0], entry[1], entry[2]])
+        return toReturn
+
+    def getAllAdminsUserIDs(self):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Returns all judges' unique userIDs from the Database"""
+
+        toReturn = []
+        temp = self.cursor.execute('SELECT USERID FROM ADMINS').fetchall()
+
+        for entry in temp:
+            toReturn.append(entry[0])
+        return set(toReturn)
+
+    def removeAdmin(self, userID):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Removes the judge from the Database
+            Might not be used"""
+
+        self.conn.execute("DELETE FROM ADMIN WHERE USERID=?", (userID,))
+        
