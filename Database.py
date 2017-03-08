@@ -69,13 +69,16 @@ class Database(object):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
-            Add contestant to the Database"""
+            Add contestant to the Database
+            Returns the unique id"""
 
         newID = random.randint(10000, 99999)
         while newID in self.idList:
             newID = random.randint(10000, 99999)
         entry.insert(0, newID)
         self.cursor.execute("INSERT INTO CONTESTANTS VALUES (?, ?, ?, ?)", entry)
+
+        return newID
 
     def getContestant(self, userID):
         """ Author: Alex Lambert\n
@@ -150,6 +153,8 @@ class Database(object):
         entry.insert(0, newID)
         self.cursor.execute("INSERT INTO JUDGES VALUES (?, ?, ?, ?)", entry)
 
+        return newID
+
     def getJudge(self, userID):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
@@ -215,7 +220,7 @@ class Database(object):
             UW NetID: alamb25\n
             Date: 3/7/17\n
             Adds the admin to the database
-            USED FOR HARDCODED"""
+            USED FOR HARDCODING ONLY"""
 
         newID = random.randint(10000, 99999)
         while newID in self.idList:
@@ -285,6 +290,8 @@ class Database(object):
         entry.insert(0, newID)
         self.cursor.execute("INSERT INTO CATEGORIES VALUES (?, ?, ?, ?)", entry)
 
+        return newID
+
     def getCategory(self, id):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
@@ -345,6 +352,4 @@ class Database(object):
             Removes the categorie corresponding to the unique userIDs from the Database\n"""
 
         self.conn.execute("DELETE FROM CATEGORIES WHERE ID=?", (id,))
-    
-    
     
