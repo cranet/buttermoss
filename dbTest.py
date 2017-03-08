@@ -72,35 +72,35 @@ def testJudgeDB(testDB):
     for row in temp:
         print row[0], row[1], row[2], ' '.join(row[3])
 
-def testCategorieDB(testDB):
-    """ Test the Categorie Databse functions"""
+def testCategoryDB(testDB):
+    """ Test the CATEGORY Databse functions"""
 
-    testDB.addCategorie(['Toad Contesy', 'fun', '9:30am'])
-    testDB.addCategorie(['Alex Contest', 'more fun', '10:30am'])
-    testDB.addCategorie(['Caleb Contest', 'less fun', '11:45am'])
+    testDB.addCategory(['Toad Contesy', 'fun', '9:30am'])
+    testDB.addCategory(['Alex Contest', 'more fun', '10:30am'])
+    testDB.addCategory(['Caleb Contest', 'less fun', '11:45am'])
 
-    print '\n===GET ALL CATEGORIE IDs TEST==='
+    print '\n===GET ALL CATEGORIES IDs TEST==='
     temp = testDB.getAllCategoriesIDs()
     for row in temp:
         print row
         tmp = row
 
-    print '\n===GET CATEGORIE TEST==='
-    temp = testDB.getCategorie(tmp)
+    print '\n===GET CATEGORY TEST==='
+    temp = testDB.getCategory(tmp)
     print temp[0], temp[1], temp[2], temp[3]
 
-    print '\n===MODIFY CATEGORIE TEST==='
-    testDB.modifyCategorie(tmp, ['Under Water Basket Weaving', 'even more fun', '12:30pm'])
-    temp = testDB.getCategorie(tmp)
+    print '\n===MODIFY CATEGORY TEST==='
+    testDB.modifyCategory(tmp, ['Under Water Basket Weaving', 'even more fun', '12:30pm'])
+    temp = testDB.getCategory(tmp)
     print temp[0], temp[1], temp[2], temp[3]
 
-    print '\n===GET ALL CATEGORIE TEST==='
+    print '\n===GET ALL CATEGORY TEST==='
     temp = testDB.getAllCategories()
     for row in temp:
         print row[0], row[1], row[2], row[3]
 
-    print '\n===REMOVE CATEGORIE TEST==='
-    testDB.removeCategorie(tmp)
+    print '\n===REMOVE CATEGORY TEST==='
+    testDB.removeCategory(tmp)
     temp = testDB.getAllCategories()
     for row in temp:
         print row[0], row[1], row[2], row[3]
@@ -139,5 +139,5 @@ if __name__ == '__main__':
     testContestantDB(db)
     testJudgeDB(db)
     testAdminDB(db)
-    testCategorieDB(db)
+    testCategoryDB(db)
 

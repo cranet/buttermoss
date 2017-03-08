@@ -16,11 +16,10 @@ class Database(object):
         self.conn = sqlite3.connect('example.db')
         self.cursor = self.conn.cursor()
         self.intializeTables()
-        self.usedIDs = set(self.getAllContestantUserIDs() +
-                           self.getAllJudgesUserIDs() +
-                           self.getAllAdminsUserIDs())
+        self.idList = set(self.getAllContestantUserIDs() +
+                          self.getAllJudgesUserIDs() +
+                          self.getAllAdminsUserIDs())
 
-        
 
     def intializeTables(self):
         """ Author: Alex Lambert\n
@@ -73,7 +72,7 @@ class Database(object):
             Add contestant to the Database"""
 
         newID = random.randint(10000, 99999)
-        while newID in self.usedIDs:
+        while newID in self.idList:
             newID = random.randint(10000, 99999)
         entry.insert(0, newID)
         self.cursor.execute("INSERT INTO CONTESTANTS VALUES (?, ?, ?, ?)", entry)
@@ -146,7 +145,7 @@ class Database(object):
             Adds the judge to the database"""
 
         newID = random.randint(10000, 99999)
-        while newID in self.usedIDs:
+        while newID in self.idList:
             newID = random.randint(10000, 99999)
         entry.insert(0, newID)
         self.cursor.execute("INSERT INTO JUDGES VALUES (?, ?, ?, ?)", entry)
@@ -219,7 +218,7 @@ class Database(object):
             USED FOR HARDCODED"""
 
         newID = random.randint(10000, 99999)
-        while newID in self.usedIDs:
+        while newID in self.idList:
             newID = random.randint(10000, 99999)
         entry.insert(0, newID)
         self.cursor.execute("INSERT INTO ADMINS VALUES (?, ?, ?)", entry)
@@ -274,19 +273,19 @@ class Database(object):
 
         self.conn.execute("DELETE FROM ADMINS WHERE USERID=?", (userID,))
 
-    def addCategorie(self, entry):
+    def addCategory(self, entry):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
             Add Categorie to the Database"""
 
         newID = random.randint(10000, 99999)
-        while newID in self.usedIDs:
+        while newID in self.idList:
             newID = random.randint(10000, 99999)
         entry.insert(0, newID)
         self.cursor.execute("INSERT INTO CATEGORIES VALUES (?, ?, ?, ?)", entry)
 
-    def getCategorie(self, id):
+    def getCategory(self, id):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
@@ -327,7 +326,7 @@ class Database(object):
             toReturn.append(entry[0])
         return toReturn
 
-    def modifyCategorie(self, id, newEntry):
+    def modifyCategory(self, id, newEntry):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
@@ -339,7 +338,7 @@ class Database(object):
         self.cursor.execute("UPDATE CATEGORIES set START_TIME=? where ID=?", [newEntry[2], id])
 
 
-    def removeCategorie(self, id):
+    def removeCategory(self, id):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n
             Date: 3/7/17\n
