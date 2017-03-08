@@ -73,6 +73,7 @@ class Database(object):
         while newID in temp:
             newID = random.randint(10000, 99999)
         entry.insert(0, newID)
+        print entry[1]
         self.cursor.execute("INSERT INTO CONTESTANTS (USERID,NAME,EMAIL,CATEGORIES) \
                             VALUES (?, ?, ?, ?)", entry)
 
@@ -263,4 +264,3 @@ class Database(object):
             Might not be used"""
 
         self.conn.execute("DELETE FROM ADMIN WHERE USERID=?", (userID,))
-        

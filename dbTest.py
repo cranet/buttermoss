@@ -9,7 +9,7 @@ def testContestantDB(testDB):
 
     print '\n===GET CONTESTANT TEST==='
     temp = testDB.getContestant(12345)
-    print temp[0], temp[1], temp[2], temp[3][0]
+    print temp[1], temp[2], temp[3][0]
 
     print '\n===MODIFY CONTESTANT TEST==='
     testDB.modifyContestant(12345, 'NONE/THREE')
@@ -94,7 +94,7 @@ def testAdminDB(testDB):
 #Tests functions of Database.py
 if __name__ == '__main__':
     db = Database()
-    #testContestantDB(db)
+    testContestantDB(db)
     testJudgeDB(db)
     testAdminDB(db)
 
