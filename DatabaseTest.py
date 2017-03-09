@@ -20,6 +20,13 @@ class DatabaseContestantTest(unittest.TestCase):
         TEST_DATABASE.removeContestant(self.keys[1])
         TEST_DATABASE.commit()
 
+    def test_doesUserExist(self):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/7/17\n
+            Tests the doesUserExist function in Database.py"""
+
+        self.assertEquals(TEST_DATABASE.doesUserExist(self.keys[0]), 1, 'User does not exist')
 
     def test_getContestant(self):
         """ Author: Alex Lambert\n

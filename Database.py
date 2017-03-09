@@ -66,6 +66,26 @@ class Database(object):
 
         self.conn.close()
 
+    def doesUserExist(self, userID):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/9/17\n
+            Checks the database if the user exists
+            returns 1 if contestant, 2 for judge and 3 for admin, 0 if none exist"""
+
+        toReturn = 0
+        temp = self.getContestant(userID)
+        if temp != []:
+            toReturn = 1
+        temp = self.getJudge(userID)
+        if temp != []:
+            toReturn = 2
+        temp = self.getAdmin(userID)
+        if temp != []:
+            toReturn = 3
+
+        return toReturn
+
     def addContestant(self, entry):
         """ Author: Alex Lambert\n
             UW NetID: alamb25\n

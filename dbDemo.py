@@ -29,11 +29,23 @@ def testContestantDB(testDB):
     for row in temp:
         print row[0], row[1], row[2], ' '.join(row[3])
 
+    #added 3/9/17 - Alex Lambert
+    print '\n===DOES CONTESTANT EXIST TEST==='
+    temp = testDB.doesUserExist(tmp)
+    print temp
+
+
     print '\n===REMOVE CONTESTANT TEST==='
     testDB.removeContestant(tmp)
     temp = testDB.getAllContestants()
     for row in temp:
         print row[0], row[1], row[2], ' '.join(row[3])
+
+    #added 3/9/17 - Alex Lambert
+    print '\n===DOES CONTESTANT EXIST AFTER REMOVAL TEST==='
+    temp = testDB.doesUserExist(tmp)
+    print temp
+
 
 def testJudgeDB(testDB):
     """ Test the Judge Databse functions"""
@@ -74,11 +86,23 @@ def testJudgeDB(testDB):
     for row in temp:
         print row
 
+    #added 3/9/17 - Alex Lambert
+    print '\n===DOES JUDGE EXIST TEST==='
+    temp = testDB.doesUserExist(tmp)
+    print temp
+
+
     print '\n===REMOVE JUDGE TEST==='
     testDB.removeJudge(tmp)
     temp = testDB.getAllJudges()
     for row in temp:
         print row[0], row[1], row[2], ' '.join(row[3])
+
+    #added 3/9/17 - Alex Lambert
+    print '\n===DOES JUDGE EXIST AFTER REMOVAL TEST==='
+    temp = testDB.doesUserExist(tmp)
+    print temp
+
 
 def testCategoryDB(testDB):
     """ Test the CATEGORY Databse functions"""
@@ -112,6 +136,7 @@ def testCategoryDB(testDB):
     temp = testDB.getAllCategories()
     for row in temp:
         print row[0], row[1], row[2], row[3]
+        
 
 def testAdminDB(testDB):
     """ Test the Admin Databse functions"""
@@ -134,12 +159,22 @@ def testAdminDB(testDB):
     temp = testDB.getAllAdmins()
     for row in temp:
         print row[0], row[1], row[2]
+    
+    #added 3/9/17 - Alex Lambert
+    print '\n===DOES ADMIN EXIST TEST==='
+    temp = testDB.doesUserExist(tmp)
+    print temp
 
     print '\n===REMOVE ADMIN TEST==='
     testDB.removeAdmin(tmp)
     temp = testDB.getAllAdmins()
     for row in temp:
         print row[0], row[1], row[2]
+
+    #added 3/9/17 - Alex Lambert
+    print '\n===DOES ADMIN EXIST AFTER REMOVAL TEST==='
+    temp = testDB.doesUserExist(tmp)
+    print temp
 
 #Tests functions of Database.py
 if __name__ == '__main__':
