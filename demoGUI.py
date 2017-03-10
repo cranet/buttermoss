@@ -21,7 +21,7 @@ class BeweeveApp(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
-        self.title("Beweeve")
+        self.title("BeWeeve")
         self.frames = {}
         
         for F in (LoginPage, HomePage, RegistrationPage):
@@ -66,14 +66,14 @@ class LoginPage(tk.Frame):
         # button_1 = tk.Button(self, text="Login",
         #                     command=self.regClick())
 
-        button = tk.Button(self, text='Login', command=lambda: controller.show_frame("RegistrationPage"))
+        button = tk.Button(self, text='Login', command=lambda: self.reg_Click())
         button.pack()
 
         button_2 = tk.Button(self, text="Register",
                             command=lambda: controller.show_frame("RegistrationPage"))
         button_2.pack()
 
-    def regClick(self):
+    def reg_Click(self):
         """check login credentials"""
         #Need non string exception
 
@@ -82,12 +82,10 @@ class LoginPage(tk.Frame):
         userID = self.entry_1.get()
 
         if DATABASE.doesUserExist(userID):
-            print 'succes'
-            label = tk.Label(self, text='SUCCESS!')
+            self.controller.show_frame('HomePage')
+        else:
+            label = tk.Label(self, text='FAILURE!')
             label.pack()
-        # else:
-        #     label = tk.Label(self, text='FAILURE!')
-        #     label.pack()
 
 # This is the HomePage Class that will show the home page screen once the user has logged in.
 class HomePage(tk.Frame):
