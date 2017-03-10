@@ -47,25 +47,27 @@ class LoginPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        label = tk.Label(self, text="Beweeve", font=TITLE_FONT)
+        label = tk.Label(self, text="BeWeeve", font=TITLE_FONT)
         label.pack(side="top", fill="x", pady=10)
 
-        label_1 = tk.Label(self, text="Username")
+        label_1 = tk.Label(self, text="User ID")
         label_1.pack(side="top")
 
         self.entry_1 = tk.Entry(self)
         self.entry_1.pack(side="top")
 
-        label_2 = tk.Label(self, text="Password")
-        label_2.pack(side="top")
+        # label_2 = tk.Label(self, text="Password")
+        # label_2.pack(side="top")
 
-        entry_2 = tk.Entry(self)
-        entry_2.pack(side="top")
+        # entry_2 = tk.Entry(self)
+        # entry_2.pack(side="top")
 
 
-        button_1 = tk.Button(self, text="Login",
-                            command=self.regClick())
-        button_1.pack()
+        # button_1 = tk.Button(self, text="Login",
+        #                     command=self.regClick())
+
+        button = tk.Button(self, text='Login', command=lambda: controller.show_frame("RegistrationPage"))
+        button.pack()
 
         button_2 = tk.Button(self, text="Register",
                             command=lambda: controller.show_frame("RegistrationPage"))
@@ -77,15 +79,15 @@ class LoginPage(tk.Frame):
 
         #User input
         #Overrides default input
-        label = tk.Label(self, text='')
         userID = self.entry_1.get()
 
         if DATABASE.doesUserExist(userID):
+            print 'succes'
             label = tk.Label(self, text='SUCCESS!')
             label.pack()
-        else:
-            label = tk.Label(self, text='FAILURE!')
-            label.pack()
+        # else:
+        #     label = tk.Label(self, text='FAILURE!')
+        #     label.pack()
 
 # This is the HomePage Class that will show the home page screen once the user has logged in.
 class HomePage(tk.Frame):
