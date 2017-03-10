@@ -56,16 +56,6 @@ class LoginPage(tk.Frame):
         self.entry_1 = tk.Entry(self)
         self.entry_1.pack(side="top")
 
-        # label_2 = tk.Label(self, text="Password")
-        # label_2.pack(side="top")
-
-        # entry_2 = tk.Entry(self)
-        # entry_2.pack(side="top")
-
-
-        # button_1 = tk.Button(self, text="Login",
-        #                     command=self.regClick())
-
         button = tk.Button(self, text='Login', command=lambda: self.reg_Click())
         button.pack()
 
@@ -116,27 +106,10 @@ class RegistrationPage(tk.Frame):
         self.label_1.pack(side="top")
         tk.Entry(self, textvariable=self.nameText).pack()
 
-        # entry_1 = tk.Entry(self)
-        # entry_1.pack(side="top")
-
         self.label_2 = tk.Label(self, text="Email")
         self.emailText = tk.StringVar()
         self.label_2.pack(side="top")
         tk.Entry(self, textvariable=self.emailText).pack()
-        # entry_2 = tk.Entry(self)
-        # entry_2.pack(side="top")
-
-        # label_3 = tk.Label(self, text="Desired Username")
-        # label_3.pack(side="top")
-
-        # entry_3 = tk.Entry(self)
-        # entry_3.pack(side="top")
-
-        # label_4 = tk.Label(self, text="Desired Password")
-        # label_4.pack(side="top")
-
-        # entry_4 = tk.Entry(self)
-        # entry_4.pack(side="top")
 
         button = tk.Button(self, text="Submit",
                            command=self.regClick)
