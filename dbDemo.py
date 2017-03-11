@@ -50,7 +50,7 @@ def testContestantDB(testDB):
 def testJudgeDB(testDB):
     """ Test the Judge Databse functions"""
 
-    testDB.addJudge(['Toad', 'cranet@uw.edu', ['NONE']])
+    testDB.addJudge(['Toad', 'cranet@uw.edu', [str(3), str(4)]])
     testDB.addJudge(['Alex', 'alamb25@uw.edu', ['NONE', 'ONE, TWO']])
     testDB.addJudge(['Caleb', 'caleb447@uw.edu', ['NONE', 'TWO', 'FOUR']])
 
