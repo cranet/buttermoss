@@ -1,6 +1,6 @@
 import os
 from Database import *
-
+#added for test
 def testContestantDB(testDB):
     """ Test the Contestant Databse functions"""
 
