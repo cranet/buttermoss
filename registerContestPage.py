@@ -1,6 +1,6 @@
 import Tkinter as tk   
 
-from BeweeveApp import DATABASE
+from BeweeveMain import DATABASE
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
@@ -37,21 +37,21 @@ class registerContestPage(tk.Frame):
 
         #DEBUGchoices = ['a', 'b', 'c']
 
-        popupMenu = tk.OptionMenu(self, tkvar, *choices)
-        popupMenu.pack()
+        #popupMenu = tk.OptionMenu(self, tkvar, *choices)
+        #popupMenu.pack()
         
-        button = tk.Button(self, text = "register", command=lambda: self.registerForCategory)
-        button.pack()
+        #button = tk.Button(self, text = "register", command=lambda: self.registerForCategory)
+        #button.pack()
 
 
 
         #registers the user for the selected category
         def registerForCategory(self):
             #update Database
-            temp = DATABASE.getCategory(DATABASE, userID)
+            temp = DATABASE.getCategory(userID)
             temp.append("")#currently selected category
             
-            DATABASE.modifyContestant(self, userID, temp) 
+            DATABASE.modifyContestant(userID, temp) 
 
             #return to homepage
             controller.show_frame("HomePage")

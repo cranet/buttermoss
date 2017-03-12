@@ -1,13 +1,10 @@
 
-import Tkinter as tk   
+import Tkinter as tk
+from LoginPage import LoginPage
+from HomePage import HomePage
+from registerContestPage import registerContestPage
+from RegistrationPage import RegistrationPage
 
-from Database import *
-from LoginPage import *
-from HomePage import *
-from registerContestPage import *
-from RegistrationPage import *
-
-DATABASE = Database() #added by Alex Lambert 3/9/17
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
@@ -58,9 +55,3 @@ class BeweeveApp(tk.Tk):
         frame = self.frames[page_name]
         frame.tkraise()
 
-
-
-# This is the loop to keep application running.
-if __name__ == "__main__":
-    app = BeweeveApp()
-    app.mainloop()
