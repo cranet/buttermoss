@@ -129,10 +129,16 @@ class JudgesListPage(tk.Frame):
         judges = []
         for judge in judgeslist:
             judges.append(judge)
+            print judge
 
+        printjudge = []
+        judgeslist = DATABASE.getAllJudges()
+        for row in judgeslist:
+            temp = row[0], row[1], row[2], ' '.join(row[3])
+            label = tk.Message(self, text= temp, width = 400)
        
         #when printed here, everything is a mess but it grabs the judges from database
-        label = tk.Message(self, text= judges, width = 200)
+        #label = tk.Message(self, text= judges, width = 200)
         label.pack()
 
 """ Author: Phansa Chaonpoj\n
