@@ -48,11 +48,12 @@ class RegistrationPage(tk.Frame):
         name = self.nameText.get()
         email = self.emailText.get()
 
+        global DATABASE 
         DATABASE = Database()
         userID = self.sendToDatabase(name, email)    #added by Alex Lambert 3/9/17
         DATABASE.commit()                            #added by Alex Lambert 3/9/17
         DATABASE.closeDB()        
-                      
+
         self.displayUserID(userID)
         #Test input
         # print name
