@@ -34,7 +34,7 @@ class RegistrationPage(tk.Frame):
         button.pack()
 
         backButton = tk.Button(self, text='Back', 
-                               command=lambda: controller.show_frame("LoginPage"))
+                               command=lambda: controller.show_frame("HomePage"))
         backButton.pack()
 
     def regClick(self):

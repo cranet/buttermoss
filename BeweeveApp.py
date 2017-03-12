@@ -4,6 +4,12 @@ from LoginPage import LoginPage
 from HomePage import HomePage
 from registerContestPage import registerContestPage
 from RegistrationPage import RegistrationPage
+from JudgesPage import JudgesPage
+from EventSchedulePage import EventSchedulePage
+from AdminJudgesPage import AdminJudgesPage
+from AdminCategoriesPage import AdminCategoriesPage
+from AdminContestantsPage import AdminContestantsPage
+from AdminPage import AdminPage
 
 
 TITLE_FONT = ("Helvetica", 20, "bold")
@@ -42,11 +48,23 @@ class BeweeveApp(tk.Tk):
         self.frames["HomePage"] = HomePage(parent=container, controller=self)
         self.frames["RegistrationPage"] = RegistrationPage(parent=container, controller=self)
         self.frames["registerContestPage"] = registerContestPage(parent=container, controller=self)
+        self.frames["JudgesPage"] = JudgesPage(parent=container, controller=self)
+        self.frames["EventSchedulePage"] = EventSchedulePage(parent=container, controller=self)
+        self.frames["AdminPage"] = AdminPage(parent=container, controller=self)
+        self.frames["AdminJudgesPage"] = AdminJudgesPage(parent=container, controller=self)
+        self.frames["AdminCategoriesPage"] = AdminCategoriesPage(parent=container, controller=self)
+        self.frames["AdminContestantsPage"] = AdminContestantsPage(parent=container, controller=self)
 
         self.frames["LoginPage"].grid(row=0, column=0, sticky="nsew")
         self.frames["HomePage"].grid(row=0, column=0, sticky="nsew")
         self.frames["RegistrationPage"].grid(row=0, column=0, sticky="nsew")
         self.frames["registerContestPage"].grid(row=0, column=0, sticky="nsew")
+        self.frames["JudgesPage"].grid(row=0, column=0, sticky="nsew")
+        self.frames["EventSchedulePage"].grid(row=0, column=0, sticky="nsew")
+        self.frames["AdminPage"].grid(row=0, column=0, sticky="nsew")
+        self.frames["AdminJudgesPage"].grid(row=0, column=0, sticky="nsew")
+        self.frames["AdminCategoriesPage"].grid(row=0, column=0, sticky="nsew")
+        self.frames["AdminContestantsPage"].grid(row=0, column=0, sticky="nsew")
 
         self.show_frame("LoginPage")
 

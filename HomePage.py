@@ -20,9 +20,9 @@ class HomePage(tk.Frame):
         label = tk.Label(self, text="This is home page once logged in!", font=TITLE_FONT)
         label.pack(side="top", fill="x", pady=10)
         
-        button2 = tk.Button(self, text = "Event Schedule") 
+        button2 = tk.Button(self, text = "Event Schedule", command=lambda: controller.show_frame("EventSchedulePage")) 
         button3 = tk.Button(self, text = "Register for Contest", command=lambda: controller.show_frame("registerContestPage"))
-        button4 = tk.Button(self, text = "Judges")
+        button4 = tk.Button(self, text = "Judges", command=lambda: controller.show_frame("JudgesPage"))
 
         button3.pack()
         button4.pack()

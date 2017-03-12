@@ -43,6 +43,11 @@ class registerContestPage(tk.Frame):
         #button = tk.Button(self, text = "register", command=lambda: self.registerForCategory)
         #button.pack()
 
+        backButton = tk.Button(self, text='Back', 
+                               command=lambda: controller.show_frame("HomePage"))
+                               
+        backButton.pack()
+
 
 
         #registers the user for the selected category
