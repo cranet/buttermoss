@@ -114,10 +114,19 @@ class JudgesListPage(tk.Frame):
         
         button = tk.Button(self, text= "Back", command=lambda:controller.show_frame("HomePage"))
         button.pack()
-        tkvar = tk.StringVar() 
-        label = tk.Message(self)
 
-        tkvar.set("Fuck bitches get money")
+        DATABASE.addJudge(['Toad', 'cranet@uw.edu', [str(3), str(4)]])
+        DATABASE.addJudge(['Alex', 'alamb25@uw.edu', ['NONE', 'ONE, TWO']])
+        DATABASE.addJudge(['Caleb', 'caleb447@uw.edu', ['NONE', 'TWO', 'FOUR']])
+
+        judgeslist = DATABASE.getAllJudges()
+        judges = []
+        for judge in judgeslist:
+            judges.append(judge)
+
+       
+        
+        label = tk.Message(self, text= judges, width = 200)
         label.pack()
 
 class EventSchedulePage(tk.Frame):
