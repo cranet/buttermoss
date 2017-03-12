@@ -17,7 +17,7 @@ class HomePage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        label = tk.Label(self, text="This is home page once logged in!", font=TITLE_FONT)
+        label = tk.Label(self, text="Welcome!", font=TITLE_FONT)
         label.pack(side="top", fill="x", pady=10)
         
         button2 = tk.Button(self, text = "Event Schedule", command=lambda: controller.show_frame("EventSchedulePage")) 

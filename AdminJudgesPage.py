@@ -8,7 +8,7 @@ class AdminJudgesPage(tk.Frame):
     """ Author: Evan Pernu\n
     UW NetID: epernu\n
     Date: 3/11/2017\n
-    This is the page that allows admins to edit judges"""
+    This is the page that allows admins to view and edit judges"""
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)

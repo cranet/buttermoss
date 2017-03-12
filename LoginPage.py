@@ -32,6 +32,8 @@ class LoginPage(tk.Frame):
                             command=lambda: self.reg_Page())
         button_2.pack()
 
+        DATABASE.addAdmin(['1', 'Evan', 'epernu@uw.edu'])
+
     def reg_Click(self):
         """check login credentials"""
         #Need non string exception
@@ -39,9 +41,11 @@ class LoginPage(tk.Frame):
         #User input
         #Overrides default input
         userID = self.entry_1.get()
-
+ 
+        #if userID in DATABASE.getAllAdminsUserIDs:               #if the ID belongs to an admin, show the admin page
+        #    self.controller.show_frame('AdminPage')              #TODO fix this "TypeError: argument of type 'instancemethod' is not iterable"
         if DATABASE.doesUserExist(userID):
-            self.controller.show_frame('HomePage')
+            self.controller.show_frame('HomePage') 
         else:
             label = tk.Label(self, text='FAILURE!')
             label.pack()
