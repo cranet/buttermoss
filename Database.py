@@ -253,12 +253,7 @@ class Database(object):
             Date: 3/7/17\n
             Adds the admin to the database
             USED FOR HARDCODING ONLY"""
-
-        newID = random.randint(10000, 99999)
-        while newID in self.idList:
-            newID = random.randint(10000, 99999)
-        entry.insert(0, newID)
-        self.idList.append(newID)
+        self.idList.append(entry[0])
         self.cursor.execute("INSERT INTO ADMINS VALUES (?, ?, ?)", entry)
 
     def getAdmin(self, userID):
