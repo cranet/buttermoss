@@ -71,6 +71,7 @@ class LoginPage(tk.Frame):
 
         #User input
         #Overrides default input
+        global userID
         userID = self.entry_1.get()
 
         if DATABASE.doesUserExist(userID):
@@ -131,18 +132,29 @@ class registerContestPage(tk.Frame):
         popupMenu = tk.OptionMenu(self, tkvar, *choices)
         popupMenu.pack()
         
-        button = tk.Button(self, text = "register", command=lambda: self.registerForCategory)
+
+        #save popupmenu option to Database
+        
+
+        #then go back to the homepage
+        button = tk.Button(self, text = "register", command=lambda: registerForCategory(self))
         button.pack()
 
+        cancelButton = tk.Button(self, text = "Cancel", command=lambda: controller.show_frame("LoginPage"))
+        cancelButton.pack()
 
 
         #registers the user for the selected category
         def registerForCategory(self):
             #update Database
-            temp = DATABASE.getCategory(DATABASE, userID)
+            temp = DATABASE.getCategory(userID)
             temp.append("")#currently selected category
             
-            DATABASE.modifyContestant(self, userID, temp) 
+            #get selected category from the dropmenu
+            selectedCate = tkvar.get()
+            print selectedCate
+
+            DATABASE.modifyContestant(userID, selectedCate) 
 
             #return to homepage
             controller.show_frame("HomePage")
