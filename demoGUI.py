@@ -103,6 +103,10 @@ class HomePage(tk.Frame):
                            command=lambda: controller.show_frame("LoginPage"))
         button.pack()
 
+""" Author: Phansa Chaonpoj\n
+            UW NetID: phansac\n
+            Date: 3/12/17\n
+           lists out all the judges frame.\n"""
 class JudgesListPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -115,6 +119,8 @@ class JudgesListPage(tk.Frame):
         button = tk.Button(self, text= "Back", command=lambda:controller.show_frame("HomePage"))
         button.pack()
 
+        #sample added judges to show things
+        #TODO, when it is printed out, its fucked up
         DATABASE.addJudge(['Toad', 'cranet@uw.edu', [str(3), str(4)]])
         DATABASE.addJudge(['Alex', 'alamb25@uw.edu', ['NONE', 'ONE, TWO']])
         DATABASE.addJudge(['Caleb', 'caleb447@uw.edu', ['NONE', 'TWO', 'FOUR']])
@@ -125,10 +131,14 @@ class JudgesListPage(tk.Frame):
             judges.append(judge)
 
        
-        
+        #when printed here, everything is a mess but it grabs the judges from database
         label = tk.Message(self, text= judges, width = 200)
         label.pack()
 
+""" Author: Phansa Chaonpoj\n
+            UW NetID: phansac\n
+            Date: 3/12/17\n
+           this is the event schedule page.\n"""
 class EventSchedulePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -137,10 +147,18 @@ class EventSchedulePage(tk.Frame):
         self.label = tk.Label(self, text= "Event Schedule")
         self.pack(side="top", fill ="x", pady=10)
 
+        button = tk.Button(self, text= "Back", command=lambda:controller.show_frame("HomePage"))
+        button.pack()
         #show listings for time and schedule.
         DATABASE.intializeTables()
+        #somehow show all the lists of time and categries ?
 
 
+""" Author: Phansa Chaonpoj\n
+            Evan Penru\n
+            Date: 3/12/17\n
+           register for contest, saves the selected menu
+           and sends to the data base for that user.\n"""
 class RegisterContestPage(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -177,7 +195,7 @@ class RegisterContestPage(tk.Frame):
         button = tk.Button(self, text = "register", command=lambda: registerForCategory(self))
         button.pack()
 
-        cancelButton = tk.Button(self, text = "Cancel", command=lambda: controller.show_frame("LoginPage"))
+        cancelButton = tk.Button(self, text = "Cancel", command=lambda: controller.show_frame("HomePage"))
         cancelButton.pack()
 
 
@@ -230,7 +248,7 @@ class RegistrationPage(tk.Frame):
         button.pack()
 
         backButton = tk.Button(self, text='Back', 
-                               command=lambda: controller.show_frame("LoginPage"))
+                               command=lambda: controller.show_frame("HomePage"))
         backButton.pack()
 
     def regClick(self):
