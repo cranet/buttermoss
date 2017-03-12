@@ -26,7 +26,7 @@ class BeweeveApp(tk.Tk):
         self.title("BeWeeve")
         self.frames = {}
         
-        for F in (LoginPage, HomePage, RegistrationPage, registerContestPage):
+        for F in (LoginPage, HomePage, RegistrationPage, RegisterContestPage, EventSchedulePage):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -90,8 +90,8 @@ class HomePage(tk.Frame):
         label = tk.Label(self, text="This is home page once logged in!", font=TITLE_FONT)
         label.pack(side="top", fill="x", pady=10)
         
-        button2 = tk.Button(self, text = "Event Schedule") 
-        button3 = tk.Button(self, text = "Register for Contest", command=lambda: controller.show_frame("registerContestPage"))
+        button2 = tk.Button(self, text = "Event Schedule", command=lambda: controller.show_frame("EventSchedulePage")) 
+        button3 = tk.Button(self, text = "Register for Contest", command=lambda: controller.show_frame("RegisterContestPage"))
         button4 = tk.Button(self, text = "Judges")
 
         button3.pack()
@@ -102,7 +102,19 @@ class HomePage(tk.Frame):
         button = tk.Button(self, text="Logout",
                            command=lambda: controller.show_frame("LoginPage"))
         button.pack()
-class registerContestPage(tk.Frame):
+class EventSchedulePage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller 
+
+        self.label = tk.Label(self, text= "Event Schedule")
+        self.pack(side="top", fill ="x", pady=10)
+
+        #show listings for time and schedule.
+        DATABASE.intializeTables()
+
+
+class RegisterContestPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -112,8 +124,8 @@ class registerContestPage(tk.Frame):
         self.pack(side="top", fill="x", pady=10)
 
         DATABASE.addCategory(['get lit', ';)', '4:20'])
-        #DATABASE.addCategory(['eat', ';)', '4:20'])
-       # DATABASE.addCategory(['sleep', ';)', '4:20'])
+        DATABASE.addCategory(['eat', ';)', '4:20'])
+        DATABASE.addCategory(['sleep', ';)', '4:20'])
 
 
         tkvar = tk.StringVar(master=None)
@@ -133,10 +145,8 @@ class registerContestPage(tk.Frame):
         popupMenu.pack()
         
 
-        #save popupmenu option to Database
         
-
-        #then go back to the homepage
+        #after they click register then they will go back to the home page
         button = tk.Button(self, text = "register", command=lambda: registerForCategory(self))
         button.pack()
 
@@ -158,6 +168,13 @@ class registerContestPage(tk.Frame):
 
             #return to homepage
             controller.show_frame("HomePage")
+
+            #test if it sent to database 
+            #print "user ID %s \n" %userID
+            #print "user selected category %s \n" %selectedCate
+            #tempUser = DATABASE.getContestant(userID)
+            #print tempUser 
+
             
         
 
