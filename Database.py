@@ -253,7 +253,7 @@ class Database(object):
             Date: 3/7/17\n
             Adds the admin to the database
             USED FOR HARDCODING ONLY"""
-
+        self.idList.append(entry[0])
         self.cursor.execute("INSERT INTO ADMINS VALUES (?, ?, ?)", entry)
 
     def getAdmin(self, userID):
