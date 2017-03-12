@@ -26,7 +26,7 @@ class BeweeveApp(tk.Tk):
         self.title("BeWeeve")
         self.frames = {}
         
-        for F in (LoginPage, HomePage, RegistrationPage, RegisterContestPage, EventSchedulePage):
+        for F in (LoginPage, HomePage, RegistrationPage, RegisterContestPage, EventSchedulePage, JudgesListPage):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -92,7 +92,7 @@ class HomePage(tk.Frame):
         
         button2 = tk.Button(self, text = "Event Schedule", command=lambda: controller.show_frame("EventSchedulePage")) 
         button3 = tk.Button(self, text = "Register for Contest", command=lambda: controller.show_frame("RegisterContestPage"))
-        button4 = tk.Button(self, text = "Judges")
+        button4 = tk.Button(self, text = "Judges", command=lambda:controller.show_frame("JudgesListPage"))
 
         button3.pack()
         button4.pack()
@@ -102,6 +102,24 @@ class HomePage(tk.Frame):
         button = tk.Button(self, text="Logout",
                            command=lambda: controller.show_frame("LoginPage"))
         button.pack()
+
+class JudgesListPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+
+        self.label = tk.Label(self, text = "list of judges")
+        self.pack(side="top", fill= "x", pady=10)
+
+        
+        button = tk.Button(self, text= "Back", command=lambda:controller.show_frame("HomePage"))
+        button.pack()
+        tkvar = tk.StringVar() 
+        label = tk.Message(self)
+
+        tkvar.set("Fuck bitches get money")
+        label.pack()
+
 class EventSchedulePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
