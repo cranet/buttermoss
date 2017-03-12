@@ -2,7 +2,7 @@ import Tkinter as tk
 
 from Database import *
 
-DATABASE = Database()
+#DATABASE = Database()
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 

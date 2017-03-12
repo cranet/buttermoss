@@ -2,7 +2,7 @@ import Tkinter as tk
 
 from Database import *
 
-DATABASE = Database()
+#DATABASE = Database()
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
@@ -48,8 +48,11 @@ class RegistrationPage(tk.Frame):
         name = self.nameText.get()
         email = self.emailText.get()
 
+        DATABASE = Database()
         userID = self.sendToDatabase(name, email)    #added by Alex Lambert 3/9/17
         DATABASE.commit()                            #added by Alex Lambert 3/9/17
+        DATABASE.closeDB()        
+                      
         self.displayUserID(userID)
         #Test input
         # print name

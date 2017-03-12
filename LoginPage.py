@@ -2,7 +2,7 @@ import Tkinter as tk
 
 from Database import *
 
-DATABASE = Database()
+#DATABASE = Database()
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
@@ -31,7 +31,7 @@ class LoginPage(tk.Frame):
         button.pack()
 
         button_2 = tk.Button(self, text="Register",
-                            command=lambda: controller.show_frame("RegistrationPage"))
+                            command=lambda: self.reg_Page())
         button_2.pack()
 
     def reg_Click(self):
@@ -42,8 +42,17 @@ class LoginPage(tk.Frame):
         #Overrides default input
         userID = self.entry_1.get()
 
+        DATABASE = Database()
         if DATABASE.doesUserExist(userID):
             self.controller.show_frame('HomePage')
+            DATABASE.closeDB()
         else:
             label = tk.Label(self, text='FAILURE!')
             label.pack()
+            DATABASE.closeDB()
+
+    def reg_Page(self):
+        """Bring up registration page"""
+        self.controller.show_frame("RegistrationPage")
+        DATABASE.closeDB()
+

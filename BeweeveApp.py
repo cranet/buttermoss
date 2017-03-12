@@ -7,7 +7,7 @@ from HomePage import *
 from registerContestPage import *
 from RegistrationPage import *
 
-DATABASE = Database() #added by Alex Lambert 3/9/17
+#DATABASE = Database() #added by Alex Lambert 3/9/17
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
