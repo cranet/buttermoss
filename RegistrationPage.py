@@ -1,8 +1,6 @@
 import Tkinter as tk   
 
-from Database import *
-
-#DATABASE = Database()
+from BeweeveApp import DATABASE
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
@@ -40,7 +38,7 @@ class RegistrationPage(tk.Frame):
         backButton.pack()
 
     def regClick(self):
-        """Gets the user input"""
+        
         #Need non string exception
 
         #User input
@@ -49,10 +47,8 @@ class RegistrationPage(tk.Frame):
         email = self.emailText.get()
 
         global DATABASE 
-        DATABASE = Database()
         userID = self.sendToDatabase(name, email)    #added by Alex Lambert 3/9/17
-        DATABASE.commit()                            #added by Alex Lambert 3/9/17
-        DATABASE.closeDB()        
+        DATABASE.commit()                            #added by Alex Lambert 3/9/17  
 
         self.displayUserID(userID)
         #Test input

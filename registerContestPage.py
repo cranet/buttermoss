@@ -1,8 +1,6 @@
 import Tkinter as tk   
 
-from Database import *
-
-#DATABASE = Database()
+from BeweeveApp import DATABASE
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
@@ -32,14 +30,12 @@ class registerContestPage(tk.Frame):
 
         #TODO: get rid of brackets
         #populate dropdown menu with each category's name
-        DATABASE = Database()
         choiceIds = DATABASE.getAllCategoriesIDs()
         choices = []
         for id in choiceIds:
             choices.append(DATABASE.getCategory(id)[1])
 
         #DEBUGchoices = ['a', 'b', 'c']
-        DATABASE.closeDB()
 
         popupMenu = tk.OptionMenu(self, tkvar, *choices)
         popupMenu.pack()
@@ -52,12 +48,10 @@ class registerContestPage(tk.Frame):
         #registers the user for the selected category
         def registerForCategory(self):
             #update Database
-            DATABASE = Database()
             temp = DATABASE.getCategory(DATABASE, userID)
             temp.append("")#currently selected category
             
             DATABASE.modifyContestant(self, userID, temp) 
 
-            DATABASE.closeDB()
             #return to homepage
             controller.show_frame("HomePage")

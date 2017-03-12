@@ -1,8 +1,6 @@
 import Tkinter as tk   
 
-from Database import *
-
-#DATABASE = Database()
+from BeweeveApp import DATABASE
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
