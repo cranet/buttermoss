@@ -32,7 +32,7 @@ class LoginPage(tk.Frame):
                             command=lambda: self.reg_Page())
         button_2.pack()
 
-        DATABASE.addAdmin(['1', 'Evan', 'epernu@uw.edu'])
+      #  DATABASE.addAdmin(['1', 'Evan', 'epernu@uw.edu'])
 
     def reg_Click(self):
         """check login credentials"""

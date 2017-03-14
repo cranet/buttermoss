@@ -31,8 +31,8 @@ class registerContestPage(tk.Frame):
             choices.append(DATABASE.getCategory(id)[1])
 
 
-        popupMenu = tk.OptionMenu(self, tkvar, *choices)
-        popupMenu.pack()
+        #popupMenu = tk.OptionMenu(self, tkvar, *choices)
+        #popupMenu.pack()
         
         button = tk.Button(self, text = "register", command=lambda: self.registerForCategory())
         button.pack()
