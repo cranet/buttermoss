@@ -243,9 +243,9 @@ class Database(object):
             UW NetID: alamb25\n
             Date: 3/7/17\n
             Removes the judge from the Database"""
-
-        self.conn.execute("DELETE FROM JUDGES WHERE USERID=?", (userID,))
-        self.idList.remove(userID)
+        if userID in self.idList:
+            self.conn.execute("DELETE FROM JUDGES WHERE USERID=?", (userID,))
+            self.idList.remove(userID)
 
     def addAdmin(self, entry):
         """ Author: Alex Lambert\n
