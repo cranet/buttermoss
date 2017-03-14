@@ -303,9 +303,9 @@ class Database(object):
             Date: 3/7/17\n
             Removes the judge from the Database
             Might not be used"""
-
-        self.conn.execute("DELETE FROM ADMINS WHERE USERID=?", (userID,))
-        self.idList.remove(userID)
+        if userID in self.idList:
+            self.conn.execute("DELETE FROM ADMINS WHERE USERID=?", (userID,))
+            self.idList.remove(userID)
 
     def addCategory(self, entry):
         """ Author: Alex Lambert\n
@@ -330,11 +330,13 @@ class Database(object):
 
         temp = self.cursor.execute('SELECT * FROM CATEGORIES WHERE ID=?', (id,))
         toReturn = []
+        
         for entry in temp:
             toReturn.append(entry[0])
             toReturn.append(entry[1])
             toReturn.append(entry[2])
             toReturn.append(entry[3])
+
         return toReturn
 
     def getAllCategories(self):
@@ -368,8 +370,7 @@ class Database(object):
             UW NetID: alamb25\n
             Date: 3/7/17\n
             Modifies existing Category using the unique ID\n"""
-        # newEntry.insert(0, id)
-        # temp = [categories, userID]
+
         self.cursor.execute("UPDATE CATEGORIES set NAME=? where ID=?", [newEntry[0], id])
         self.cursor.execute("UPDATE CATEGORIES set ABOUT=? where ID=?", [newEntry[1], id])
         self.cursor.execute("UPDATE CATEGORIES set START_TIME=? where ID=?", [newEntry[2], id])
@@ -381,6 +382,7 @@ class Database(object):
             Date: 3/7/17\n
             Removes the category corresponding to the unique userIDs from the Database\n"""
 
-        self.conn.execute("DELETE FROM CATEGORIES WHERE ID=?", (id,))
-        self.idList.remove(id)
-    
+        if id in self.idList:
+            self.conn.execute("DELETE FROM CATEGORIES WHERE ID=?", (id,))
+            self.idList.remove(id)
+        
