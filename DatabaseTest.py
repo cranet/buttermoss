@@ -242,6 +242,24 @@ class DatabaseJudgeTest(unittest.TestCase):
         temp = TEST_DATABASE.getJudge(self.keys[0])
 
         self.assertEqual(temp, [], 'remove failed')
+
+    def test_uniqueKeys(self):
+        """ Author: Alex Lambert\n
+            UW NetID: alamb25\n
+            Date: 3/8/17\n
+            Tests the unqiue key creates 10000 contestants to ensure conflicts"""
+
+        uniqueDB = Database('Many.db')
+
+        for i in range(10000):
+            self.assertTrue(uniqueDB.addJudge(['', '', '']), 'Failed')
+
+        #close and get rid of database
+        uniqueDB.closeDB()
+        try:
+            os.remove('Many.db')
+        except OSError:
+            pass
     
 if __name__ == '__main__':
     unittest.main()
