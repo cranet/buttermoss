@@ -34,7 +34,7 @@ class registerContestPage(tk.Frame):
         popupMenu = tk.OptionMenu(self, tkvar, *choices)
         popupMenu.pack()
 
-        button = tk.Button(self, text = "register", command=lambda: self.registerForCategory(tkvar.get()))
+        button = tk.Button(self, text="register", command=lambda: self.registerForCategory(tkvar.get()))
         button.pack()
 
         backButton = tk.Button(self, text='Back', 
@@ -45,11 +45,12 @@ class registerContestPage(tk.Frame):
 
 
     #registers the user for the selected category
-    def registerForCategory(self, op):
+    def registerForCategory(self, category):
         #TODO: register the user for the selected category
         #grabbed the seletected category value and assign to that user.
         userobject = DATABASE.getContestant(48890)
         
-        DATABASE.modifyContestant(userobject , op)
+
+        DATABASE.modifyContestant(userobject, category)
         #return to homepage
         self.controller.show_frame("HomePage")
