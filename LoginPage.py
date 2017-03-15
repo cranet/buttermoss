@@ -9,7 +9,7 @@ class LoginPage(tk.Frame):
     Date: 3/5/2017\n
     Author: Evan Pernu\n
     UW NetID: epernu\n
-    Date: 3/11/2017\n
+    Date: 3/14/2017\n
     This is the LoginPage Class that will pop up upon startup."""
 
     def __init__(self, parent, controller):
@@ -35,6 +35,12 @@ class LoginPage(tk.Frame):
         #hardcode in the first admin. ID=1
         if not DATABASE.doesUserExist('1'):
             DATABASE.addAdmin(['1', 'Evan', 'epernu@uw.edu'])
+        
+        #hardcode a contestant in for easy debug
+        if not DATABASE.doesUserExist('2'):
+            DATABASE.addAdmin(['2', 'Barney', 'hahaplease@uw.edu'])
+
+        
 
     def reg_Click(self):
         """check login credentials"""

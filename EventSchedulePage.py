@@ -8,7 +8,7 @@ TITLE_FONT = ("Helvetica", 20, "bold")
 class EventSchedulePage(tk.Frame):
     """ Author: Evan Pernu\n
     UW NetID: epernu\n
-    Date: 3/11/2017\n
+    Date: 3/14/2017\n
     This page displays an event calendar"""
 
     def __init__(self, parent, controller):
@@ -17,7 +17,7 @@ class EventSchedulePage(tk.Frame):
 
         backButton = tk.Button(self, text='Back', 
                                command=lambda: controller.show_frame("HomePage"))                      
-        backButton.grid(row=6, column=1)
+        backButton.grid(row=7, column=1)
 
         #initialize scrollable list
         eventNameList = tk.Listbox(self, width=20, height=20, font=("Helvetica", 12))
@@ -28,9 +28,10 @@ class EventSchedulePage(tk.Frame):
         eventNameList.config(yscrollcommand=scrollbar.set)
         eventNameList.bind("<Button-1>", self.selectItem)
 
-        #DATABASE.addCategory(['Toad Contesy', 'fun', '9:30am'])
-        #DATABASE.addCategory(['Alex Contest', 'more fun', '10:30am'])
-        #DATABASE.addCategory(['Caleb Contest', 'less fun', '11:45am'])
+        #add test events
+        DATABASE.addCategory(['Toad Contesy', 'fun', '9:30am'])
+        DATABASE.addCategory(['Alex Contest', 'more fun', '10:30am'])
+        DATABASE.addCategory(['Caleb Contest', 'less fun', '11:45am'])
 
         #add all categories to list
         temp = DATABASE.getAllCategoriesIDs()
@@ -48,28 +49,30 @@ class EventSchedulePage(tk.Frame):
         label3.grid(row=4, column=3)
         label4.grid(row=5, column=3)
 
-        
+        self.info1 = tk.Label(self, text="", font=("Helvetica", 10))
+        self.info2 = tk.Label(self, text="", font=("Helvetica", 10))
+        self.info3 = tk.Label(self, text="", font=("Helvetica", 10))
+        self.info4 = tk.Label(self, text="", font=("Helvetica", 10))
 
+        self.info1.grid(row=2, column=4)
+        self.info2.grid(row=3, column=4)
+        self.info3.grid(row=4, column=4)
+        self.info4.grid(row=5, column=4)
+
+        
+    #display selection's information
     def selectItem(self, event):
         widget = event.widget
         selection=widget.curselection()
-        value = widget.get(selection[0])
         index = int(widget.curselection()[0])
-
         temp = DATABASE.getAllCategoriesIDs()
 
-        info1 = tk.Label(self, text=DATABASE.getCategory(temp[index])[0], font=("Helvetica", 10))
-        info2 = tk.Label(self, text=DATABASE.getCategory(temp[index])[1], font=("Helvetica", 10))
-        info3 = tk.Label(self, text=DATABASE.getCategory(temp[index])[2], font=("Helvetica", 10))
-        info4 = tk.Label(self, text=DATABASE.getCategory(temp[index])[3], font=("Helvetica", 10))
+        #set all labels to selection's values
+        self.info1.config(text=DATABASE.getCategory(temp[index])[0])
+        self.info2.config(text=DATABASE.getCategory(temp[index])[1])
+        self.info3.config(text=DATABASE.getCategory(temp[index])[2])
+        self.info4.config(text=DATABASE.getCategory(temp[index])[3])
 
-        info1.grid(row=2, column=4)
-        info2.grid(row=3, column=4)
-        info3.grid(row=4, column=4)
-        info4.grid(row=5, column=4)
+        
 
-        #self.info1.config(text=DATABASE.getCategory(temp[value])[0]) 
-        #info2.config(text=) 
-        #info3.config(text=) 
-        #info4.config(text=)    
 

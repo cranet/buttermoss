@@ -19,7 +19,7 @@ class BeweeveApp(tk.Tk):
     Date: 3/5/2017\n
     Author: Evan Pernu\n
     UW NetID: epernu\n
-    Date: 3/11/2017\n
+    Date: 3/14/2017\n
     This is the main app that controls each frame."""
 
     def __init__(self, *args, **kwargs):
@@ -34,15 +34,6 @@ class BeweeveApp(tk.Tk):
 
         self.title("BeWeeve")
         self.frames = {}
-        
-       # for F in (LoginPage, HomePage, RegistrationPage, registerContestPage):
-        #    page_name = F.__name__
-         #   frame = F(parent=container, controller=self)
-          #  self.frames[page_name] = frame
-
-            # This puts all of the pages in the same location.
-            # The one on the top of the stacking order will be the one that is visible.
-           # frame.grid(row=0, column=0, sticky="nsew")
         
         self.frames["LoginPage"] = LoginPage(parent=container, controller=self)
         self.frames["HomePage"] = HomePage(parent=container, controller=self)
