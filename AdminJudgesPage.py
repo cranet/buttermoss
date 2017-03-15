@@ -1,7 +1,11 @@
 import Tkinter as tk   
 
 from BeweeveMain import DATABASE
-
+#
+#
+#this should more or less be a copy and paste of AdminContestantsPage
+#
+#
 TITLE_FONT = ("Helvetica", 20, "bold")
 
 class AdminJudgesPage(tk.Frame):

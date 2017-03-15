@@ -86,6 +86,7 @@ class AdminCategoriesPage(tk.Frame):
     #writes the values of the entry boxes to the selection in database
     def saveChanges(self):
         DATABASE.modifyCategory(int(self.info1.cget('text')), [self.entry2.get(), self.entry3.get(), self.entry4.get()])
+        DATABASE.commit()
         refresh()
     
     #TODO: list doesnt totally refresh until you go back
@@ -101,6 +102,7 @@ class AdminCategoriesPage(tk.Frame):
     #adds a new, empty item
     def addItem(self):
         DATABASE.addCategory(['New Event', '', ''])
+        DATABASE.commit()
         self.refresh()
 
     #TODO
