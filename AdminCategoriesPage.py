@@ -87,7 +87,7 @@ class AdminCategoriesPage(tk.Frame):
     def saveChanges(self):
         DATABASE.modifyCategory(int(self.info1.cget('text')), [self.entry2.get(), self.entry3.get(), self.entry4.get()])
         DATABASE.commit()
-        refresh()
+        self.refresh()
     
     #TODO: list doesnt totally refresh until you go back
     #refreshes the list

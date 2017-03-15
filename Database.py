@@ -2,6 +2,7 @@ import sqlite3
 import random
 
 class Database(object):
+    global currentUser
     """ Author: Alex Lambert\n
         UW NetID: alamb25\n
         Date: 3/7/17\n
@@ -12,7 +13,7 @@ class Database(object):
             UW NetID: alamb25\n
             Date: 3/7/17\n
             Constructor"""
-
+        currentUser = 0
         self.conn = sqlite3.connect(dbName)
         self.cursor = self.conn.cursor()
         self.intializeTables()
@@ -76,6 +77,7 @@ class Database(object):
         toReturn = 0
         temp = self.getContestant(userID)
         if temp != []:
+            currentUser = userID #saving last checked user.
             toReturn = 1
         temp = self.getJudge(userID)
         if temp != []:
@@ -386,3 +388,5 @@ class Database(object):
             self.conn.execute("DELETE FROM CATEGORIES WHERE ID=?", (id,))
             self.idList.remove(id)
         
+    def getCurrentUser(self): #returns the last checked user which is hopefully the logged in user.
+        return self.currentUser 

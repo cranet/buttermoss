@@ -83,7 +83,7 @@ class AdminContestantsPage(tk.Frame):
     def saveChanges(self):
         DATABASE.modifyContestant(int(self.info1.cget('text')), self.entry4.get)
         DATABASE.commit()
-        refresh()
+        self.refresh()
     
     #TODO: list doesnt totally refresh until you go back
     #refreshes the list
