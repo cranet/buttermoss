@@ -19,7 +19,7 @@ class AdminCategoriesPage(tk.Frame):
                                command=lambda: controller.show_frame("AdminPage"))                       
         saveButton = tk.Button(self, text='Save Changes', command=lambda: self.saveChanges())
         addButton = tk.Button(self, text='New Event', command=lambda: self.addItem())
-        deleteButton = tk.Button(self, text='Delete Selected', command=lambda: self.delete())       
+        deleteButton = tk.Button(self, text='Delete Selected', command=lambda: self.deleteSelected())       
 
         backButton.grid(row=7, column=2)  
         addButton.grid(row=7, column=3)
@@ -109,6 +109,23 @@ class AdminCategoriesPage(tk.Frame):
     #deletes the selection
     def delete(self):
         self.refresh()
+
+    #deletes the selected category added by Phansa.
+    def deleteSelected(self):
+        selected = self.eventNameList.curselection()
+        pos = 0
+        for i in selected:
+            idx = int(i) - pos
+            self.eventNameList.delete(idx, idx)
+            pos = pos + 1
+        #clear the forms.
+        self.entry2.delete(0, tk.END)
+        self.entry3.delete(0, tk.END)
+        self.entry4.delete(0, tk.END)
+
+        print selected 
+        #delete from database.
+        DATABASE.removeContestant(selected[0])
 
 
 
