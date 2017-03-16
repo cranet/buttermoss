@@ -65,7 +65,7 @@ class AdminContestantsPage(tk.Frame):
         widget = event.widget
         selection=widget.curselection()
         index = int(widget.curselection()[0])
-        temp = DATABASE.getAllCategoriesIDs()
+        temp = DATABASE.getAllContestantUserIDs()
 
         #clear all entry boxes
         self.entry2.delete(0, tk.END)
@@ -81,27 +81,45 @@ class AdminContestantsPage(tk.Frame):
     #TODO: currently cannot modify email
     #writes the values of the entry boxes to the selection in database
     def saveChanges(self):
-        DATABASE.modifyContestant(int(self.info1.cget('text')), self.entry4.get)
-        DATABASE.commit()
+         #add the entries to database. and to list. 
+        entry = [self.entry2.get, self.entry3.getvar, self.entry4.getint]
+        print entry
+      #  DATABASE.addContestant(entry);
+       # DATABASE.commit()
+        self.update()
         self.refresh()
     
     #TODO: list doesnt totally refresh until you go back
     #refreshes the list
     def refresh(self):
         #clear list
-        self.nameList.delete(0, tk.END)
-
+        self.nameList.delete(0, tk.END) 
         temp = DATABASE.getAllContestantUserIDs()
         for id in temp:
             self.nameList.insert(tk.END, DATABASE.getContestant(id)[1])
+        self.update() #changes the look of the list.
 
-    #adds a new, empty item
+    #connects to new contestant so it should clear the current info.
     def addItem(self):
-        self.sendToDatabase("New User", "")
-        DATABASE.commit()  
-        self.refresh()
+        #DATABASE.sendToDatabase("New User", "")
+       # DATABASE.commit()  
+        self.entry2.delete(0, tk.END)
+        self.entry3.delete(0, tk.END)
+        self.entry4.delete(0, tk.END)
+
 
     #TODO
-    #deletes the selection
+    #deletes the selection from list and database.
     def delete(self):
-        self.refresh()
+        selected = self.nameList.curselection()
+        pos = 0
+        for i in selected:
+            idx = int(i) - pos
+            self.nameList.delete(idx, idx)
+            pos = pos + 1
+        #clear the forms.
+        self.entry2.delete(0, tk.END)
+        self.entry3.delete(0, tk.END)
+        self.entry4.delete(0, tk.END)
+        #delete from database.
+        DATABASE.removeContestant(selected[0])
