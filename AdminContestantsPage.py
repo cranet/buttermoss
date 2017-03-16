@@ -111,7 +111,11 @@ class AdminContestantsPage(tk.Frame):
     #TODO
     #deletes the selection from list and database.
     def delete(self):
-        selected = self.nameList.curselection()
+        #parsing through the index
+        temp = DATABASE.getAllContestantUserIDs()
+        selected = map(int, self.nameList.curselection())
+        contestant = DATABASE.getContestant(temp[selected[0]])
+        
         pos = 0
         for i in selected:
             idx = int(i) - pos
@@ -122,6 +126,6 @@ class AdminContestantsPage(tk.Frame):
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
-        print selected 
+      
         #delete from database.
-        DATABASE.removeContestant(selected[0]) #this dont werk
+        DATABASE.removeContestant(contestant[0]) 
