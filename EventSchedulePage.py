@@ -1,7 +1,7 @@
 import Tkinter as tk   
 import ttk
 
-from BeweeveMain import DATABASE
+from BeweeveMain import DATABASE, CURRENT_USER
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 

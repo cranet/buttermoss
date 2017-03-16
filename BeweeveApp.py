@@ -11,7 +11,6 @@ from AdminCategoriesPage import AdminCategoriesPage
 from AdminContestantsPage import AdminContestantsPage
 from AdminPage import AdminPage
 
-
 TITLE_FONT = ("Helvetica", 20, "bold")
 
 class BeweeveApp(tk.Tk):

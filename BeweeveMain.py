@@ -4,8 +4,11 @@
         The main for the BeweeveApp"""
 from BeweeveApp import *
 from Database import Database
+from User import User
 
 DATABASE = Database() #added by Alex Lambert 3/11/17
+CURRENT_USER = User()
+
 
 # This is the loop to keep application running.
 if __name__ == "__main__":

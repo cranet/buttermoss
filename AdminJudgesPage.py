@@ -1,6 +1,6 @@
 import Tkinter as tk   
 
-from BeweeveMain import DATABASE
+from BeweeveMain import DATABASE, CURRENT_USER
 #
 #
 #this should more or less be a copy and paste of AdminContestantsPage
