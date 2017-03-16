@@ -4,16 +4,21 @@ from BeweeveMain import DATABASE, CURRENT_USER
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
+selectedUser = 0
 class AdminContestantsPage(tk.Frame):
     """ Author: Evan Pernu\n
     UW NetID: epernu\n
     Date: 3/11/2017\n
     This is the page that allows admins to view and edit contestants"""
-
+    
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-
+        selectedUser = 0
+        #ADDING CONTESTANTS FOR TESTING
+        DATABASE.addContestant(['Toad', 'cranet@uw.edu', ['NONE']])
+        DATABASE.addContestant(['Alex', 'alamb25@uw.edu', ['NONE' 'ONE ONE', 'TWO']])
+        DATABASE.addContestant(['Caleb', 'caleb447@uw.edu', ['NONE', 'TWO', 'FOUR']])
         #initialize buttons
         backButton = tk.Button(self, text='Back', 
                                command=lambda: controller.show_frame("AdminPage"))                       
@@ -73,6 +78,8 @@ class AdminContestantsPage(tk.Frame):
         self.entry4.delete(0, tk.END)
 
         #set all entry boxes to selection's values
+        global selectedUser 
+        selectedUser = DATABASE.getContestant(temp[index])
         self.info1.config(text=DATABASE.getContestant(temp[index])[0])
         self.entry2.insert(0,DATABASE.getContestant(temp[index])[1])
         self.entry3.insert(0,DATABASE.getContestant(temp[index])[2])
@@ -81,13 +88,22 @@ class AdminContestantsPage(tk.Frame):
     #TODO: currently cannot modify email
     #writes the values of the entry boxes to the selection in database
     def saveChanges(self):
-         #add the entries to database. and to list. 
-        entry = [self.entry2.get, self.entry3.getvar, self.entry4.getint]
-        print entry
-      #  DATABASE.addContestant(entry);
-       # DATABASE.commit()
-        self.update()
-        self.refresh()
+         #add the entries to database. and to list.
+         #Grabbing ID from selected User, and grabbing information to be updated from box.BaseException
+         # if the user already exists, we modify. else it's a new contestant. 
+         if (selectedUser == 0):
+                #adding new contestant. 
+            entry = [self.entry2.get(), self.entry3.get(), self.entry4.get()]
+            print entry
+            DATABASE.addContestant(entry)
+            DATABASE.commit()
+
+         elif DATABASE.doesUserExist(selectedUser[0]):
+            DATABASE.modifyContestant(selectedUser[0], self.entry4.get()) 
+            DATABASE.commit()    
+
+         self.update()
+         self.refresh()
     
     #TODO: list doesnt totally refresh until you go back
     #refreshes the list
@@ -103,6 +119,8 @@ class AdminContestantsPage(tk.Frame):
     def addItem(self):
         #DATABASE.sendToDatabase("New User", "")
        # DATABASE.commit()  
+        selectedUser = 0
+        self.info1.selection_clear() 
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
@@ -112,9 +130,8 @@ class AdminContestantsPage(tk.Frame):
     #deletes the selection from list and database.
     def delete(self):
         #parsing through the index
-        temp = DATABASE.getAllContestantUserIDs()
+        #temp = DATABASE.getAllContestantUserIDs()
         selected = map(int, self.nameList.curselection())
-        contestant = DATABASE.getContestant(temp[selected[0]])
         
         pos = 0
         for i in selected:
@@ -128,4 +145,6 @@ class AdminContestantsPage(tk.Frame):
 
       
         #delete from database.
-        DATABASE.removeContestant(contestant[0]) 
+        DATABASE.removeContestant(selectedUser[0]) 
+        DATABASE.commit()
+
