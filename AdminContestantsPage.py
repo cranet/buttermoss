@@ -91,7 +91,9 @@ class AdminContestantsPage(tk.Frame):
          #add the entries to database. and to list.
          #Grabbing ID from selected User, and grabbing information to be updated from box.BaseException
          # if the user already exists, we modify. else it's a new contestant. 
-         if (selectedUser == 0):
+         #print "printing selected user before changing"
+         #print selectedUser
+         if (self.selectedUser == 0):
                 #adding new contestant. 
             entry = [self.entry2.get(), self.entry3.get(), self.entry4.get()]
             print entry
@@ -119,8 +121,11 @@ class AdminContestantsPage(tk.Frame):
     def addItem(self):
         #DATABASE.sendToDatabase("New User", "")
        # DATABASE.commit()  
-        selectedUser = 0
-        self.info1.selection_clear() 
+
+        self.selectedUser = 0
+        #print "clearing selected user"
+        #print selectedUser
+        self.info1.config(text="")
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
