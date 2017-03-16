@@ -19,6 +19,14 @@ class AdminJudgesPage(tk.Frame):
         self.controller = controller
 
 
+        listbox = tk.Listbox(self)
+        listbox.pack()
+
+        
+        temp = DATABASE.getAllJudges()
+        #adding name of judges
+        for judges in temp:
+            listbox.insert(tk.END, judges[1])
         backButton = tk.Button(self, text='Back', 
                                command=lambda: controller.show_frame("AdminPage"))
 
