@@ -25,16 +25,20 @@ class registerContestPage(tk.Frame):
 
         #TODO: get rid of brackets
         #populate dropdown menu with each category's name
-        choiceIds = DATABASE.getAllCategoriesIDs()
-        choices = []
+        categories = DATABASE.getAllCategories();
+        #choiceIds = DATABASE.getAllCategoriesIDs()
+        #choices = []
         #getting categories and adding each into choices.
-        for id in choiceIds:
-            choices.append(DATABASE.getCategory(id)[1])
+        categoryNames = {}
+        for x in categories:
+            #choices.append(DATABASE.getCategory(id)[1])
+            categoryNames[x[1]] = x[0]
 
-        popupMenu = tk.OptionMenu(self, tkvar, *choices)
+        popupMenu = tk.OptionMenu(self, tkvar, *categoryNames.keys())
         popupMenu.pack()
 
-        button = tk.Button(self, text="register", command=lambda: self.registerForCategory(tkvar.get()))
+        button = tk.Button(self, text="register", command=lambda: 
+                           self.registerForCategory(categoryNames.get(tkvar.get())))
         button.pack()
 
         backButton = tk.Button(self, text='Back', 
@@ -48,9 +52,9 @@ class registerContestPage(tk.Frame):
     def registerForCategory(self, category):
         #TODO: register the user for the selected category
         #grabbed the seletected category value and assign to that user.
-        userobject = DATABASE.getContestant(48890)
+        print category
         
 
-        DATABASE.modifyContestant(userobject, category)
+        DATABASE.modifyContestant(CURRENT_USER.userID, category)
         #return to homepage
         self.controller.show_frame("HomePage")
