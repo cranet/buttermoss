@@ -125,7 +125,7 @@ class AdminCategoriesPage(tk.Frame):
 
         print selected 
         #delete from database.
-        DATABASE.removeContestant(selected[0])
+        DATABASE.removeCategory(selected[0]) #this dont werk
 
 
 

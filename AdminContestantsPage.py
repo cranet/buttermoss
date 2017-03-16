@@ -121,5 +121,7 @@ class AdminContestantsPage(tk.Frame):
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
+
+        print selected 
         #delete from database.
-        DATABASE.removeContestant(selected[0])
+        DATABASE.removeContestant(selected[0]) #this dont werk
