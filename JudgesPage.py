@@ -14,6 +14,19 @@ class JudgesPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
+
+        #adding some judges here
+        DATABASE.addJudge(['Judge Toad', 'cranet@uw.edu', [str(3), str(4)]])
+        DATABASE.addJudge(['Judge Alex', 'alamb25@uw.edu', ['NONE', 'ONE, TWO']])
+        DATABASE.addJudge(['Judge Caleb', 'caleb447@uw.edu', ['NONE', 'TWO', 'FOUR']])
+        temp = DATABASE.getAllJudges()
+       
+        listbox = tk.Listbox(self)
+        listbox.pack()
+        #adding name of judges
+        for judges in temp:
+            listbox.insert(tk.END, judges[1])
+
         backButton = tk.Button(self, text='Back', 
                                command=lambda: controller.show_frame("HomePage"))
                                
