@@ -14,11 +14,12 @@ class AdminContestantsPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        selectedUser = 0
+        self.selectedUser = 0
         #ADDING CONTESTANTS FOR TESTING
-        DATABASE.addContestant(['Toad', 'cranet@uw.edu', ['NONE']])
-        DATABASE.addContestant(['Alex', 'alamb25@uw.edu', ['NONE' 'ONE ONE', 'TWO']])
-        DATABASE.addContestant(['Caleb', 'caleb447@uw.edu', ['NONE', 'TWO', 'FOUR']])
+        #DATABASE.addContestant(['Toad', 'cranet@uw.edu', ['NONE']])
+        #DATABASE.addContestant(['Alex', 'alamb25@uw.edu', ['NONE' 'ONE ONE', 'TWO']])
+        #DATABASE.addContestant(['Caleb', 'caleb447@uw.edu', ['NONE', 'TWO', 'FOUR']])
+
         #initialize buttons
         backButton = tk.Button(self, text='Back', 
                                command=lambda: controller.show_frame("AdminPage"))                       
@@ -64,6 +65,8 @@ class AdminContestantsPage(tk.Frame):
         self.entry3.grid(row=4, column=4)
         self.entry4.grid(row=5, column=4)
 
+       
+
         
     #display selection's information
     def selectItem(self, event):
@@ -79,7 +82,7 @@ class AdminContestantsPage(tk.Frame):
 
         #set all entry boxes to selection's values
         global selectedUser 
-        selectedUser = DATABASE.getContestant(temp[index])
+        self.selectedUser = DATABASE.getContestant(temp[index])
         self.info1.config(text=DATABASE.getContestant(temp[index])[0])
         self.entry2.insert(0,DATABASE.getContestant(temp[index])[1])
         self.entry3.insert(0,DATABASE.getContestant(temp[index])[2])
@@ -100,8 +103,8 @@ class AdminContestantsPage(tk.Frame):
             DATABASE.addContestant(entry)
             DATABASE.commit()
 
-         elif DATABASE.doesUserExist(selectedUser[0]):
-            DATABASE.modifyContestant(selectedUser[0], self.entry4.get()) 
+         elif DATABASE.doesUserExist(self.selectedUser[0]):
+            DATABASE.modifyContestant(self.selectedUser[0], self.entry4.get()) 
             DATABASE.commit()    
 
          self.update()
@@ -131,6 +134,8 @@ class AdminContestantsPage(tk.Frame):
         self.entry4.delete(0, tk.END)
 
 
+
+
     #TODO
     #deletes the selection from list and database.
     def delete(self):
@@ -150,6 +155,6 @@ class AdminContestantsPage(tk.Frame):
 
       
         #delete from database.
-        DATABASE.removeContestant(selectedUser[0]) 
-        DATABASE.commit()
+        DATABASE.removeContestant(self.selectedUser[0]) 
+        self.refresh()
 

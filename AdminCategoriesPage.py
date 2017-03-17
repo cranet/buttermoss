@@ -13,6 +13,7 @@ class AdminCategoriesPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
+        self.selectedCategory = 0
 
         #initialize buttons
         backButton = tk.Button(self, text='Back', 
@@ -80,7 +81,7 @@ class AdminCategoriesPage(tk.Frame):
         #getting selected category
 
         global selectedCategory
-        selectedCategory = DATABASE.getCategory(temp[index])
+        self.selectedCategory = DATABASE.getCategory(temp[index])
         print selectedCategory
         #set all entry boxes to selection's values
         self.info1.config(text=DATABASE.getCategory(temp[index])[0])
@@ -91,14 +92,14 @@ class AdminCategoriesPage(tk.Frame):
     #writes the values of the entry boxes to the selection in database
     #if the selectedcategory is zero add new else modify category.
     def saveChanges(self):
-        
         if (self.selectedCategory == 0):
             #adding new category 
             entry = [self.entry2.get(), self.entry3.get(), self.entry4.get()]
             print entry
             DATABASE.addCategory(entry)
         else:
-             DATABASE.modifyCategory(selectedCategory[0], self.entry4.get()) 
+            entry = [self.entry2.get(), self.entry3.get(), self.entry4.get()]
+            DATABASE.modifyCategory(self.selectedCategory[0], entry) 
        
         DATABASE.commit()    
         self.refresh()
@@ -140,7 +141,7 @@ class AdminCategoriesPage(tk.Frame):
 
       
         #delete from database.
-        DATABASE.removeCategory(selectedCategory[0]) 
+        DATABASE.removeCategory(self.selectedCategory[0]) 
         self.refresh()
 
 
