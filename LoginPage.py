@@ -44,19 +44,31 @@ class LoginPage(tk.Frame):
 
         #User input
         #Overrides default input
-        userID = self.entry_1.get()
+        if self.entry_1.get() != "":
+            userID = self.entry_1.get()
 
-        log = DATABASE.doesUserExist(userID)
-        if log == 1:
-            self.controller.show_frame('HomePage')
-        elif log == 3:
-            self.controller.show_frame('AdminPage')
-        elif log == 2:
-            self.controller.show_frame('HomePage')  #if the user is a judge
+            log = DATABASE.doesUserExist(userID)
+            if log == 1:
+                self.controller.show_frame('HomePage')
+            elif log == 3:
+                self.controller.show_frame('AdminPage')
+            elif log == 2:
+                self.controller.show_frame('HomePage')  #if the user is a judge
+            else:
+                self.error("FAILURE")
+
         else:
-            label = tk.Label(self, text='FAILURE!')
-            label.pack()
+            self.error("PLEASE ENTER TEXT")
+            #controller.show_frame("RegistrationPage")
 
     def reg_Page(self):
         """Bring up registration page"""
         self.controller.show_frame("RegistrationPage")
+    
+    def error(self, string):
+        self.errorPop = tk.Tk()
+        self.errorPop.wm_title("ERROR")
+        self.errorLabel = tk.Label(self.errorPop, text=string)
+        self.errorLabel.pack()
+        self.errorButton = tk.Button(self.errorPop, text="Okay", command=self.errorPop.destroy)
+        self.errorButton.pack()
