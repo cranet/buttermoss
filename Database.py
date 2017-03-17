@@ -119,7 +119,7 @@ class Database(object):
             toReturn.append(entry[1])
             toReturn.append(entry[2])
             toReturn.append(entry[3].split('/'))
-            print entry[3].split('/')
+
         return toReturn
 
     def getAllContestants(self):

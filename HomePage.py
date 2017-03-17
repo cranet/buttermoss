@@ -22,11 +22,10 @@ class HomePage(tk.Frame):
         label.pack(side="top", fill="x", pady=10)
 
         #str = 
-        print DATABASE.getAllContestantUserIDs()
+
         idLabel = tk.Label(self, text="ID: %i" %(CURRENT_USER.userID))
         idLabel.pack()
-        print CURRENT_USER.userID
-        print CURRENT_USER.email
+
         
         button2 = tk.Button(self, text = "Event Schedule", width=12, command=lambda: controller.show_frame("EventSchedulePage")) 
         button4 = tk.Button(self, text = "Judges", width=12, command=lambda: controller.show_frame("JudgesPage"))
