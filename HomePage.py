@@ -29,12 +29,10 @@ class HomePage(tk.Frame):
         print CURRENT_USER.email
         
         button2 = tk.Button(self, text = "Event Schedule", command=lambda: controller.show_frame("EventSchedulePage")) 
-        button3 = tk.Button(self, text = "Register for Contest", command=lambda: controller.show_frame("registerContestPage"))
         button4 = tk.Button(self, text = "Judges", command=lambda: controller.show_frame("JudgesPage"))
 
         idButton = tk.Button(self, text="Show ID", command=self.showID)
 
-        button3.pack()
         button4.pack()
         button2.pack()
         idButton.pack()

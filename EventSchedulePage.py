@@ -16,15 +16,18 @@ class EventSchedulePage(tk.Frame):
         self.controller = controller
 
         backButton = tk.Button(self, text='Back', 
-                               command=lambda: controller.show_frame("HomePage"))                      
+                               command=lambda: controller.show_frame("HomePage"))    
+        regButton = tk.Button(self, text='Register for Selected', command=lambda: self.registerForCategory())         
+
         backButton.grid(row=7, column=1)
+        regButton.grid(row=7,column=3)
 
         #initialize scrollable list
         eventNameList = tk.Listbox(self, width=20, height=20, font=("Helvetica", 12))
         eventNameList.grid(row=2, column=1, rowspan=5)
         scrollbar = tk.Scrollbar(self, orient="vertical")
         scrollbar.config(command=eventNameList.yview)
-        scrollbar.grid(row=2, column=5, rowspan=5)  #TODO: scrollbar may not work correctly
+        scrollbar.grid(row=2, column=5, rowspan=5)
         eventNameList.config(yscrollcommand=scrollbar.set)
         eventNameList.bind("<Button-1>", self.selectItem)
 
@@ -68,4 +71,12 @@ class EventSchedulePage(tk.Frame):
         self.info3.config(text=DATABASE.getCategory(temp[index])[2])
         self.info4.config(text=DATABASE.getCategory(temp[index])[3])
 
+        selectedCategory = DATABASE.getCategory(temp[index])[1]
+
+    #registers the user for the selected category
+    def registerForCategory(self):
+        DATABASE.modifyContestant(CURRENT_USER.userID, selectedCategory)
+        DATABASE.commit()
+        #return to homepage
+        self.controller.show_frame("HomePage")
 
