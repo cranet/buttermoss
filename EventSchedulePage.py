@@ -15,12 +15,13 @@ class EventSchedulePage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        self.backButton = tk.Button(self, text='Back', 
-                               command=lambda: controller.show_frame("HomePage"))    
-        self.regButton = tk.Button(self, text='Register for Selected', command=lambda: self.registerForCategory())         
+        self.backButton = tk.Button(self, text='Back',
+                                    command=lambda: controller.show_frame("HomePage"))
+        self.regButton = tk.Button(self, text='Register for Selected',
+                                   command=lambda: self.registerForCategory())
 
         self.backButton.grid(row=7, column=1)
-        self.regButton.grid(row=7,column=3)
+        self.regButton.grid(row=7, column=3)
 
         #initialize scrollable list
         self.eventNameList = tk.Listbox(self, width=20, height=20, font=("Helvetica", 12))
@@ -33,8 +34,8 @@ class EventSchedulePage(tk.Frame):
 
         #add all categories to list
         temp = DATABASE.getAllCategoriesIDs()
-        for id in temp:
-            self.eventNameList.insert(tk.END, DATABASE.getCategory(id)[1])
+        for usrID in temp:
+            self.eventNameList.insert(tk.END, DATABASE.getCategory(usrID)[1])
 
         #initialize selection display
         self.label1 = tk.Label(self, text="ID:", font=("Helvetica", 10))
@@ -61,7 +62,7 @@ class EventSchedulePage(tk.Frame):
     #display selection's information
     def selectItem(self, event):
         widget = event.widget
-        selection=widget.curselection()
+        selection = widget.curselection()
         index = int(widget.curselection()[0])
         temp = DATABASE.getAllCategoriesIDs()
 
