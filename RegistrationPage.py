@@ -30,14 +30,15 @@ class RegistrationPage(tk.Frame):
         tk.Entry(self, textvariable=self.emailText).pack()
 
         button = tk.Button(self, text="Submit",
-                           command=self.regClick)
+                           command=lambda: self.regClick(controller))
         button.pack()
 
         backButton = tk.Button(self, text='Back', 
                                command=lambda: controller.show_frame("HomePage"))
+        
         backButton.pack()
 
-    def regClick(self):
+    def regClick(self, controller):
         
         #Need non string exception
 
@@ -47,13 +48,27 @@ class RegistrationPage(tk.Frame):
         email = self.emailText.get()
 
         global DATABASE 
-        userID = self.sendToDatabase(name, email)    #added by Alex Lambert 3/9/17
+        CURRENT_USER.userID = self.sendToDatabase(name, email)    #added by Alex Lambert 3/9/17
         DATABASE.commit()                            #added by Alex Lambert 3/9/17  
 
-        self.displayUserID(userID)
+        self.pop = tk.Tk()
+        self.pop.wm_title("User ID")
+        label = tk.Label(self.pop, text=CURRENT_USER.userID)
+        label.pack(fill="x", pady=10)
+        button = tk.Button(self.pop, text="Okay", command=lambda: self.daisy())
+        button.pack()
+
+        #self.displayUserID(CURRENT_USER.userID)
+        #CURRENT_USER.userID = userID
         #Test input
         # print name
         # print email
+
+    def daisy(self):
+        print "stupid"
+        self.pop.destroy()
+        self.controller.show_frame("HomePage")
+        
 
     def sendToDatabase(self, name, email):
         """ Author: Alex Lambert\n
