@@ -70,7 +70,7 @@ class RegistrationPage(tk.Frame):
             self.errorLabel = tk.Label(self.errorPop, text="PLEASE ENTER TEXT")
             self.errorLabel.pack()
             self.errorButton = tk.Button(self.errorPop, text="Okay", command=self.errorPop.destroy)
-            self.errorButton.pack()
+            self.errorButton.pack(pady=5)
             #controller.show_frame("RegistrationPage")
 
     def daisy(self):
