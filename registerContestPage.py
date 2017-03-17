@@ -23,12 +23,8 @@ class registerContestPage(tk.Frame):
         tkvar = tk.StringVar(self)
         tkvar.set("Select a Category")
 
-        DATABASE.addCategory(['netflix n chill', '', '2am'])
-        #TODO: get rid of brackets
         #populate dropdown menu with each category's name
         categories = DATABASE.getAllCategories();
-        #choiceIds = DATABASE.getAllCategoriesIDs()
-        #choices = []
         #getting categories and adding each into choices.
         categoryNames = {}
         for x in categories:
@@ -43,19 +39,11 @@ class registerContestPage(tk.Frame):
         button.pack()
 
         backButton = tk.Button(self, text='Back', 
-                               command=lambda: controller.show_frame("HomePage"))
-
-                      
+                               command=lambda: controller.show_frame("HomePage"))                    
         backButton.pack()
-
 
     #registers the user for the selected category
     def registerForCategory(self, category):
-        #TODO: register the user for the selected category
-        #grabbed the seletected category value and assign to that user.
-        print category
-        
-
         DATABASE.modifyContestant(CURRENT_USER.userID, category)
         #return to homepage
         self.controller.show_frame("HomePage")
