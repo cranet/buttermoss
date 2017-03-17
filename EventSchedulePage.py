@@ -65,7 +65,6 @@ class EventSchedulePage(tk.Frame):
             Date: 3/14/2017\n
             This page displays an event calendar"""
         widget = event.widget
-        selection = widget.curselection()
         index = int(widget.curselection()[0])
         temp = DATABASE.getAllCategoriesIDs()
 
