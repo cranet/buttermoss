@@ -1,7 +1,7 @@
 import Tkinter as tk   
 import ttk
 
-from BeweeveMain import DATABASE
+from BeweeveMain import DATABASE, CURRENT_USER
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
@@ -71,11 +71,11 @@ class EventSchedulePage(tk.Frame):
         self.info3.config(text=DATABASE.getCategory(temp[index])[2])
         self.info4.config(text=DATABASE.getCategory(temp[index])[3])
 
-        selectedCategory = DATABASE.getCategory(temp[index])[1]
+        self.selectedCategory = DATABASE.getCategory(temp[index])[1]
 
     #registers the user for the selected category
     def registerForCategory(self):
-        DATABASE.modifyContestant(CURRENT_USER.userID, selectedCategory)
+        DATABASE.modifyContestant(CURRENT_USER.userID, self.selectedCategory)
         DATABASE.commit()
         #return to homepage
         self.controller.show_frame("HomePage")
