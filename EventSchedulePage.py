@@ -22,7 +22,7 @@ class EventSchedulePage(tk.Frame):
 
         self.backButton.grid(row=7, column=1)
         self.regButton.grid(row=7, column=3)
-        date 
+
         #initialize scrollable list
         self.eventNameList = tk.Listbox(self, width=20, height=20, font=("Helvetica", 12))
         self.eventNameList.grid(row=2, column=1, rowspan=5)
