@@ -80,7 +80,6 @@ class AdminJudgesPage(tk.Frame):
         self.entry4.delete(0, tk.END)
 
         #set all entry boxes to selection's values
-        global selectedUser 
         self.selectedUser = DATABASE.getJudge(temp[index])
         self.info1.config(text=DATABASE.getJudge(temp[index])[0])
         self.entry2.insert(0,DATABASE.getJudge(temp[index])[1])
@@ -98,7 +97,7 @@ class AdminJudgesPage(tk.Frame):
          if (self.selectedUser == 0):
                 #adding new Judge. 
             entry = [self.entry2.get(), self.entry3.get(), self.entry4.get()]
-            print entry
+
             DATABASE.addJudge(entry)
             DATABASE.commit()
 
@@ -122,8 +121,7 @@ class AdminJudgesPage(tk.Frame):
     #connects to new Judge so it should clear the current info.
     def addItem(self):
         self.selectedUser = 0
-        #print "clearing selected user"
-        #print selectedUser
+
         self.info1.config(text="")
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
@@ -132,7 +130,7 @@ class AdminJudgesPage(tk.Frame):
     #deletes the selection from list and database.
     def delete(self):
         #parsing through the index
-        #temp = DATABASE.getAllJudgeUserIDs()
+
         selected = map(int, self.nameList.curselection())
         
         pos = 0

@@ -28,15 +28,15 @@ class HomePage(tk.Frame):
         print CURRENT_USER.userID
         print CURRENT_USER.email
         
-        button2 = tk.Button(self, text = "Event Schedule", width=10, command=lambda: controller.show_frame("EventSchedulePage")) 
-        button4 = tk.Button(self, text = "Judges", width=10, command=lambda: controller.show_frame("JudgesPage"))
+        button2 = tk.Button(self, text = "Event Schedule", width=12, command=lambda: controller.show_frame("EventSchedulePage")) 
+        button4 = tk.Button(self, text = "Judges", width=12, command=lambda: controller.show_frame("JudgesPage"))
 
 
         button4.pack(pady=5)
         button2.pack(pady=5)
     
 
-        button = tk.Button(self, text="Logout", width=10,
+        button = tk.Button(self, text="Logout", width=12,
                            command=lambda: controller.show_frame("LoginPage"))
         button.pack()
 

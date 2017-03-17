@@ -119,7 +119,7 @@ class AdminCategoriesPage(tk.Frame):
             UW NetID: epernu\n
             Date: 3/11/2017\n"""
         self.selectedCategory = 0
-        #print selectedUser
+
         self.info1.config(text="")
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)

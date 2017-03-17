@@ -93,7 +93,6 @@ class AdminContestantsPage(tk.Frame):
         if (self.selectedUser == 0):
                 #adding new contestant. 
             entry = [self.entry2.get(), self.entry3.get(), self.entry4.get()]
-            print entry
             DATABASE.addContestant(entry)
             DATABASE.commit()
 

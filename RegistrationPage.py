@@ -35,11 +35,11 @@ class RegistrationPage(tk.Frame):
 
         backButton = tk.Button(self, text='Back', 
                                command=lambda: controller.show_frame("HomePage"))
-        
+
         backButton.pack()
 
     def regClick(self, controller):
-        
+
         #Need non string exception
         if self.nameText.get() != "" or self.emailText.get() != "":
 
@@ -48,22 +48,16 @@ class RegistrationPage(tk.Frame):
             name = self.nameText.get()
             email = self.emailText.get()
 
-            global DATABASE 
             CURRENT_USER.userID = self.sendToDatabase(name, email)    #added by Alex Lambert 3/9/17
             DATABASE.commit()                            #added by Alex Lambert 3/9/17  
 
             self.pop = tk.Tk()
             self.pop.wm_title("User ID")
-            label = tk.Label(self.pop, text=CURRENT_USER.userID)
+            label = tk.Label(self.pop, text='Your Unique ID is:\n'+str(CURRENT_USER.userID))
             label.pack(fill="x", pady=10)
             button = tk.Button(self.pop, text="Okay", command=lambda: self.daisy())
             button.pack()
 
-            #self.displayUserID(CURRENT_USER.userID)
-            #CURRENT_USER.userID = userID
-            #Test input
-            # print name
-            # print email
         else:
             self.errorPop = tk.Tk()
             self.errorPop.wm_title("ERROR")
@@ -74,10 +68,9 @@ class RegistrationPage(tk.Frame):
             #controller.show_frame("RegistrationPage")
 
     def daisy(self):
-        print "stupid"
         self.pop.destroy()
         self.controller.show_frame("HomePage")
-        
+
 
     def sendToDatabase(self, name, email):
         """ Author: Alex Lambert\n
