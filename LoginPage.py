@@ -25,12 +25,16 @@ class LoginPage(tk.Frame):
         self.entry_1 = tk.Entry(self)
         self.entry_1.pack(side="top")
 
-        button = tk.Button(self, text='Login', command=lambda: self.reg_Click())
-        button.pack()
+        button = tk.Button(self, text='Login', width="10", command=lambda: self.reg_Click())
+        button.pack(pady=5)
 
-        button_2 = tk.Button(self, text="Register",
-                            command=lambda: self.reg_Page())
+        button_2 = tk.Button(self, text="Register", width="10",
+                             command=lambda: self.reg_Page())
         button_2.pack()
+
+
+
+
 
         
 

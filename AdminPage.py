@@ -14,16 +14,16 @@ class AdminPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        button = tk.Button(self, text='Judges', 
+        button = tk.Button(self, text='Judges', width=10, 
                                command=lambda: controller.show_frame("AdminJudgesPage"))
-        button2 = tk.Button(self, text='Categories', 
+        button2 = tk.Button(self, text='Categories', width=10, 
                                command=lambda: controller.show_frame("AdminCategoriesPage"))
-        button3 = tk.Button(self, text='Contestants', 
+        button3 = tk.Button(self, text='Contestants', width=10, 
                                command=lambda: controller.show_frame("AdminContestantsPage"))
-        backButton = tk.Button(self, text='Logout', 
+        backButton = tk.Button(self, text='Logout', width=10, 
                                command=lambda: controller.show_frame("LoginPage"))
 
-        button.pack()
-        button2.pack()
-        button3.pack()
-        backButton.pack()
+        button.pack(pady=5)
+        button2.pack(pady=5)
+        button3.pack(pady=5)
+        backButton.pack(pady=5)
