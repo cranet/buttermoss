@@ -3,7 +3,7 @@ import Tkinter as tk
 from BeweeveMain import DATABASE, CURRENT_USER
 
 TITLE_FONT = ("Helvetica", 20, "bold")
-
+selectedCategory = 0
 class AdminCategoriesPage(tk.Frame):
     """ Author: Evan Pernu\n
     UW NetID: epernu\n
@@ -71,12 +71,17 @@ class AdminCategoriesPage(tk.Frame):
         selection=widget.curselection()
         index = int(widget.curselection()[0])
         temp = DATABASE.getAllCategoriesIDs()
-
+        
         #clear all entry boxes
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
+        #getting selected category
+
+        global selectedCategory
+        selectedCategory = DATABASE.getCategory(temp[index])
+        print selectedCategory
         #set all entry boxes to selection's values
         self.info1.config(text=DATABASE.getCategory(temp[index])[0])
         self.entry2.insert(0,DATABASE.getCategory(temp[index])[1])
@@ -84,9 +89,18 @@ class AdminCategoriesPage(tk.Frame):
         self.entry4.insert(0,DATABASE.getCategory(temp[index])[3])
 
     #writes the values of the entry boxes to the selection in database
+    #if the selectedcategory is zero add new else modify category.
     def saveChanges(self):
-        DATABASE.modifyCategory(int(self.info1.cget('text')), [self.entry2.get(), self.entry3.get(), self.entry4.get()])
-        DATABASE.commit()
+        
+        if (self.selectedCategory == 0):
+            #adding new category 
+            entry = [self.entry2.get(), self.entry3.get(), self.entry4.get()]
+            print entry
+            DATABASE.addCategory(entry)
+        else:
+             DATABASE.modifyCategory(selectedCategory[0], self.entry4.get()) 
+       
+        DATABASE.commit()    
         self.refresh()
     
     #TODO: list doesnt totally refresh until you go back
@@ -94,38 +108,40 @@ class AdminCategoriesPage(tk.Frame):
     def refresh(self):
         #clear list
         self.eventNameList.delete(0, tk.END)
-
         temp = DATABASE.getAllCategoriesIDs()
         for id in temp:
             self.eventNameList.insert(tk.END, DATABASE.getCategory(id)[1])
 
     #adds a new, empty item
     def addItem(self):
-        DATABASE.addCategory(['New Event', '', ''])
-        DATABASE.commit()
-        self.refresh()
+        self.selectedCategory = 0
+        #print selectedUser
+        self.info1.config(text="")
+        self.entry2.delete(0, tk.END)
+        self.entry3.delete(0, tk.END)
+        self.entry4.delete(0, tk.END)
 
-    #TODO
-    #deletes the selection
-    def delete(self):
-        self.refresh()
 
     #deletes the selected category added by Phansa.
     def deleteSelected(self):
-        selected = self.eventNameList.curselection()
+        #parsing through the index
+        selected = map(int, self.eventNameList.curselection())
+    
         pos = 0
         for i in selected:
             idx = int(i) - pos
             self.eventNameList.delete(idx, idx)
             pos = pos + 1
+
         #clear the forms.
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
-        print selected 
+      
         #delete from database.
-        DATABASE.removeCategory(selected[0]) #this dont werk
+        DATABASE.removeCategory(selectedCategory[0]) 
+        self.refresh()
 
 
 
