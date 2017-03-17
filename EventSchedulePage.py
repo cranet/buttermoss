@@ -58,9 +58,12 @@ class EventSchedulePage(tk.Frame):
         self.info3.grid(row=4, column=4)
         self.info4.grid(row=5, column=4)
 
-        
     #display selection's information
     def selectItem(self, event):
+        """ Author: Evan Pernu\n
+            UW NetID: epernu\n
+            Date: 3/14/2017\n
+            This page displays an event calendar"""
         widget = event.widget
         selection = widget.curselection()
         index = int(widget.curselection()[0])
@@ -76,6 +79,10 @@ class EventSchedulePage(tk.Frame):
 
     #registers the user for the selected category
     def registerForCategory(self):
+        """ Author: Evan Pernu\n
+            UW NetID: epernu\n
+            Date: 3/14/2017\n
+            This page displays an event calendar"""
         DATABASE.modifyContestant(CURRENT_USER.userID, self.selectedCategory)
         DATABASE.commit()
         #return to homepage
