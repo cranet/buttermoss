@@ -23,6 +23,7 @@ class registerContestPage(tk.Frame):
         tkvar = tk.StringVar(self)
         tkvar.set("Select a Category")
 
+        DATABASE.addCategory(['netflix n chill', '', '2am'])
         #TODO: get rid of brackets
         #populate dropdown menu with each category's name
         categories = DATABASE.getAllCategories();
