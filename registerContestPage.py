@@ -22,7 +22,7 @@ class registerContestPage(tk.Frame):
 
         tkvar = tk.StringVar(self)
         tkvar.set("Select a Category")
-
+        DATABASE.addCategory(['Please select an event','','']);
         #populate dropdown menu with each category's name
         categories = DATABASE.getAllCategories();
         #getting categories and adding each into choices.

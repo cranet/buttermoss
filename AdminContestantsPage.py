@@ -122,9 +122,6 @@ class AdminContestantsPage(tk.Frame):
 
     #connects to new contestant so it should clear the current info.
     def addItem(self):
-        #DATABASE.sendToDatabase("New User", "")
-       # DATABASE.commit()  
-
         self.selectedUser = 0
         #print "clearing selected user"
         #print selectedUser
@@ -133,10 +130,6 @@ class AdminContestantsPage(tk.Frame):
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
-
-
-
-    #TODO
     #deletes the selection from list and database.
     def delete(self):
         #parsing through the index
@@ -153,7 +146,6 @@ class AdminContestantsPage(tk.Frame):
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
-      
         #delete from database.
         DATABASE.removeContestant(self.selectedUser[0]) 
         self.refresh()

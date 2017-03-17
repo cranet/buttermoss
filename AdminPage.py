@@ -20,8 +20,8 @@ class AdminPage(tk.Frame):
                                command=lambda: controller.show_frame("AdminCategoriesPage"))
         button3 = tk.Button(self, text='Contestants', 
                                command=lambda: controller.show_frame("AdminContestantsPage"))
-        backButton = tk.Button(self, text='Back', 
-                               command=lambda: controller.show_frame("HomePage"))
+        backButton = tk.Button(self, text='Logout', 
+                               command=lambda: controller.show_frame("LoginPage"))
 
         button.pack()
         button2.pack()
