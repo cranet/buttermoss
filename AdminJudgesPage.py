@@ -85,7 +85,7 @@ class AdminJudgesPage(tk.Frame):
         self.info1.config(text=DATABASE.getJudge(temp[index])[0])
         self.entry2.insert(0,DATABASE.getJudge(temp[index])[1])
         self.entry3.insert(0,DATABASE.getJudge(temp[index])[2])
-        self.entry4.insert(0,DATABASE.getJudge(temp[index])[3])
+        self.entry4.insert(0,DATABASE.getJudge(temp[index])[3][0])
 
     #TODO: currently cannot modify email
     #writes the values of the entry boxes to the selection in database

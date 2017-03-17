@@ -81,7 +81,7 @@ class AdminContestantsPage(tk.Frame):
         self.info1.config(text=DATABASE.getContestant(temp[index])[0])
         self.entry2.insert(0, DATABASE.getContestant(temp[index])[1])
         self.entry3.insert(0, DATABASE.getContestant(temp[index])[2])
-        self.entry4.insert(0, DATABASE.getContestant(temp[index])[3])
+        self.entry4.insert(0, DATABASE.getContestant(temp[index])[3][0])
 
     #writes the values of the entry boxes to the selection in database
     def saveChanges(self):

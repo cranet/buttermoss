@@ -77,7 +77,7 @@ class Database(object):
         toReturn = 0
         temp = self.getContestant(userID)
         if temp != []:
-            currentUser = userID #saving last checked user.
+            currentUser = userID 
             toReturn = 1
         temp = self.getJudge(userID)
         if temp != []:
@@ -119,6 +119,7 @@ class Database(object):
             toReturn.append(entry[1])
             toReturn.append(entry[2])
             toReturn.append(entry[3].split('/'))
+            print entry[3].split('/')
         return toReturn
 
     def getAllContestants(self):
@@ -332,7 +333,7 @@ class Database(object):
 
         temp = self.cursor.execute('SELECT * FROM CATEGORIES WHERE ID=?', (id,))
         toReturn = []
-        
+
         for entry in temp:
             toReturn.append(entry[0])
             toReturn.append(entry[1])
