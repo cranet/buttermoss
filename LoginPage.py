@@ -32,14 +32,6 @@ class LoginPage(tk.Frame):
                             command=lambda: self.reg_Page())
         button_2.pack()
 
-        #hardcode in the first admin. ID=1
-        if not DATABASE.doesUserExist('1'):
-            DATABASE.addAdmin(['1', 'Evan', 'epernu@uw.edu'])
-        
-        #hardcode a contestant in for easy debug
-        if not DATABASE.doesUserExist('2'):
-            DATABASE.addAdmin(['2', 'Barney', 'hahaplease@uw.edu'])
-
         
 
     def reg_Click(self):
@@ -54,7 +46,7 @@ class LoginPage(tk.Frame):
         if log == 1:
             self.controller.show_frame('HomePage')
         elif log == 3:
-                self.controller.show_frame('AdminPage')
+            self.controller.show_frame('AdminPage')
         elif log == 2:
             self.controller.show_frame('HomePage')  #if the user is a judge
         else:

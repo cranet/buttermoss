@@ -15,10 +15,6 @@ class AdminContestantsPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         self.selectedUser = 0
-        #ADDING CONTESTANTS FOR TESTING
-        #DATABASE.addContestant(['Toad', 'cranet@uw.edu', ['NONE']])
-        #DATABASE.addContestant(['Alex', 'alamb25@uw.edu', ['NONE' 'ONE ONE', 'TWO']])
-        #DATABASE.addContestant(['Caleb', 'caleb447@uw.edu', ['NONE', 'TWO', 'FOUR']])
 
         #initialize buttons
         backButton = tk.Button(self, text='Back', 

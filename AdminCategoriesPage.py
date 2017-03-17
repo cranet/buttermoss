@@ -36,11 +36,6 @@ class AdminCategoriesPage(tk.Frame):
         self.eventNameList.config(yscrollcommand=scrollbar.set)
         self.eventNameList.bind("<Button-1>", self.selectItem)
 
-        #add test events
-        DATABASE.addCategory(['Toad Contesy', 'fun', '9:30am'])
-        DATABASE.addCategory(['Alex Contest', 'more fun', '10:30am'])
-        DATABASE.addCategory(['Caleb Contest', 'less fun', '11:45am'])
-
         #add all categories to list
         self.refresh()
 

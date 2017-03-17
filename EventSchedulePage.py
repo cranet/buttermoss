@@ -1,7 +1,7 @@
 import Tkinter as tk   
 import ttk
 
-from BeweeveMain import DATABASE, CURRENT_USER
+from BeweeveMain import DATABASE
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
@@ -27,11 +27,6 @@ class EventSchedulePage(tk.Frame):
         scrollbar.grid(row=2, column=5, rowspan=5)  #TODO: scrollbar may not work correctly
         eventNameList.config(yscrollcommand=scrollbar.set)
         eventNameList.bind("<Button-1>", self.selectItem)
-
-        #add test events
-        DATABASE.addCategory(['Toad Contesy', 'fun', '9:30am'])
-        DATABASE.addCategory(['Alex Contest', 'more fun', '10:30am'])
-        DATABASE.addCategory(['Caleb Contest', 'less fun', '11:45am'])
 
         #add all categories to list
         temp = DATABASE.getAllCategoriesIDs()
@@ -72,7 +67,5 @@ class EventSchedulePage(tk.Frame):
         self.info2.config(text=DATABASE.getCategory(temp[index])[1])
         self.info3.config(text=DATABASE.getCategory(temp[index])[2])
         self.info4.config(text=DATABASE.getCategory(temp[index])[3])
-
-        
 
 
