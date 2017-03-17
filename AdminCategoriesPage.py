@@ -1,7 +1,8 @@
-import Tkinter as tk   
+"""Admin Categories Class"""
+import Tkinter as tk
+from BeweeveMain import DATABASE #CURRENT_USER
 
-from BeweeveMain import DATABASE, CURRENT_USER
-
+#Global font
 TITLE_FONT = ("Helvetica", 20, "bold")
 
 class AdminCategoriesPage(tk.Frame):
@@ -15,7 +16,7 @@ class AdminCategoriesPage(tk.Frame):
         self.controller = controller
         self.selectedCategory = 0
 
-        #initialize buttons
+        #Initialize buttons
         self.backButton = tk.Button(self, text='Back',
                                     command=lambda: controller.show_frame("AdminPage"))
         self.saveButton = tk.Button(self, text='Save Changes', command=lambda: self.saveChanges())
@@ -28,7 +29,7 @@ class AdminCategoriesPage(tk.Frame):
         self.deleteButton.grid(row=7, column=4)
         self.saveButton.grid(row=7, column=5)
 
-        #initialize scrollable list
+        #Initialize scrollable list
         self.eventNameList = tk.Listbox(self, width=20, height=20, font=("Helvetica", 12))
         self.eventNameList.grid(row=2, column=1, rowspan=5)
         self.scrollbar = tk.Scrollbar(self, orient="vertical")
@@ -37,10 +38,10 @@ class AdminCategoriesPage(tk.Frame):
         self.eventNameList.config(yscrollcommand=self.scrollbar.set)
         self.eventNameList.bind("<Button-1>", self.selectItem)
 
-        #add all categories to list
+        #Add all categories to list
         self.refresh()
 
-        #initialize selection display
+        #Initialize selection display
         self.label1 = tk.Label(self, text="ID:", font=("Helvetica", 10))
         self.label2 = tk.Label(self, text="Name:", font=("Helvetica", 10))
         self.label3 = tk.Label(self, text="Description:", font=("Helvetica", 10))
@@ -61,7 +62,7 @@ class AdminCategoriesPage(tk.Frame):
         self.entry3.grid(row=4, column=4)
         self.entry4.grid(row=5, column=4)
 
-    #display selection's information
+    #Display selection's information
     def selectItem(self, event):
         """ Author: Evan Pernu\n
             UW NetID: epernu\n
@@ -70,29 +71,29 @@ class AdminCategoriesPage(tk.Frame):
         index = int(widget.curselection()[0])
         temp = DATABASE.getAllCategoriesIDs()
 
-        #clear all entry boxes
+        #Clear all entry boxes
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
-        #getting selected category
+        #Getting selected category
         self.selectedCategory = DATABASE.getCategory(temp[index])
         print self.selectedCategory
 
-        #set all entry boxes to selection's values
+        #Set all entry boxes to selection's values
         self.info1.config(text=DATABASE.getCategory(temp[index])[0])
         self.entry2.insert(0, DATABASE.getCategory(temp[index])[1])
         self.entry3.insert(0, DATABASE.getCategory(temp[index])[2])
         self.entry4.insert(0, DATABASE.getCategory(temp[index])[3])
 
-    #writes the values of the entry boxes to the selection in database
-    #if the selectedcategory is zero add new else modify category.
+    #Writes the values of the entry boxes to the selection in database
+    #If the selectedcategory is zero add new else modify category.
     def saveChanges(self):
         """ Author: Evan Pernu\n
             UW NetID: epernu\n
             Date: 3/11/2017\n"""
         if self.selectedCategory == 0:
-            #adding new category
+            #Adding new category
             entry = [self.entry2.get(), self.entry3.get(), self.entry4.get()]
             DATABASE.addCategory(entry)
         else:
@@ -102,36 +103,35 @@ class AdminCategoriesPage(tk.Frame):
         DATABASE.commit()
         self.refresh()
 
-    #refreshes the list
+    #Refreshes the list
     def refresh(self):
         """ Author: Evan Pernu\n
             UW NetID: epernu\n
             Date: 3/11/2017\n"""
-        #clear list
+        #Clear list
         self.eventNameList.delete(0, tk.END)
         temp = DATABASE.getAllCategoriesIDs()
         for usrID in temp:
             self.eventNameList.insert(tk.END, DATABASE.getCategory(usrID)[1])
 
-    #adds a new, empty item
+    #Adds a new, empty item
     def addItem(self):
         """ Author: Evan Pernu\n
             UW NetID: epernu\n
             Date: 3/11/2017\n"""
         self.selectedCategory = 0
-
         self.info1.config(text="")
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
 
-    #deletes the selected category added by Phansa.
+    #Deletes the selected category added by Phansa.
     def deleteSelected(self):
         """ Author: Evan Pernu\n
             UW NetID: epernu\n
             Date: 3/11/2017\n"""
-        #parsing through the index
+        #Parsing through the index
         selected = map(int, self.eventNameList.curselection())
 
         pos = 0
@@ -140,12 +140,11 @@ class AdminCategoriesPage(tk.Frame):
             self.eventNameList.delete(idx, idx)
             pos = pos + 1
 
-        #clear the forms.
+        #Clear the forms.
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
-
-        #delete from database.
+        #Delete from database.
         DATABASE.removeCategory(self.selectedCategory[0])
         self.refresh()
