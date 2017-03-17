@@ -110,8 +110,8 @@ class AdminCategoriesPage(tk.Frame):
         #clear list
         self.eventNameList.delete(0, tk.END)
         temp = DATABASE.getAllCategoriesIDs()
-        for id in temp:
-            self.eventNameList.insert(tk.END, DATABASE.getCategory(id)[1])
+        for usrID in temp:
+            self.eventNameList.insert(tk.END, DATABASE.getCategory(usrID)[1])
 
     #adds a new, empty item
     def addItem(self):
@@ -133,7 +133,7 @@ class AdminCategoriesPage(tk.Frame):
             Date: 3/11/2017\n"""
         #parsing through the index
         selected = map(int, self.eventNameList.curselection())
-    
+
         pos = 0
         for i in selected:
             idx = int(i) - pos
@@ -145,11 +145,7 @@ class AdminCategoriesPage(tk.Frame):
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
-      
+
         #delete from database.
-        DATABASE.removeCategory(self.selectedCategory[0]) 
+        DATABASE.removeCategory(self.selectedCategory[0])
         self.refresh()
-
-
-
-        
