@@ -1,9 +1,6 @@
-import Tkinter as tk   
-import ttk
-
+"""Event Schedule Page"""
+import Tkinter as tk
 from BeweeveMain import DATABASE, CURRENT_USER
-
-TITLE_FONT = ("Helvetica", 20, "bold")
 
 class EventSchedulePage(tk.Frame):
     """ Author: Evan Pernu\n
@@ -23,7 +20,7 @@ class EventSchedulePage(tk.Frame):
         self.backButton.grid(row=7, column=1)
         self.regButton.grid(row=7, column=3)
 
-        #initialize scrollable list
+        #Initialize scrollable list
         self.eventNameList = tk.Listbox(self, width=20, height=20, font=("Helvetica", 12))
         self.eventNameList.grid(row=2, column=1, rowspan=5)
         self.scrollbar = tk.Scrollbar(self, orient="vertical")
@@ -32,12 +29,12 @@ class EventSchedulePage(tk.Frame):
         self.eventNameList.config(yscrollcommand=self.scrollbar.set)
         self.eventNameList.bind("<Button-1>", self.selectItem)
 
-        #add all categories to list
+        #Add all categories to list
         temp = DATABASE.getAllCategoriesIDs()
         for usrID in temp:
             self.eventNameList.insert(tk.END, DATABASE.getCategory(usrID)[1])
 
-        #initialize selection display
+        #Initialize selection display
         self.label1 = tk.Label(self, text="ID:", font=("Helvetica", 10))
         self.label2 = tk.Label(self, text="Name:", font=("Helvetica", 10))
         self.label3 = tk.Label(self, text="Description:", font=("Helvetica", 10))
@@ -58,7 +55,7 @@ class EventSchedulePage(tk.Frame):
         self.info3.grid(row=4, column=4)
         self.info4.grid(row=5, column=4)
 
-    #display selection's information
+    #Display selection's information
     def selectItem(self, event):
         """ Author: Evan Pernu\n
             UW NetID: epernu\n
@@ -68,7 +65,7 @@ class EventSchedulePage(tk.Frame):
         index = int(widget.curselection()[0])
         temp = DATABASE.getAllCategoriesIDs()
 
-        #set all labels to selection's values
+        #Set all labels to selection's values
         self.info1.config(text=DATABASE.getCategory(temp[index])[0])
         self.info2.config(text=DATABASE.getCategory(temp[index])[1])
         self.info3.config(text=DATABASE.getCategory(temp[index])[2])
@@ -76,7 +73,7 @@ class EventSchedulePage(tk.Frame):
 
         self.selectedCategory = DATABASE.getCategory(temp[index])[1]
 
-    #registers the user for the selected category
+    #Registers the user for the selected category
     def registerForCategory(self):
         """ Author: Evan Pernu\n
             UW NetID: epernu\n
@@ -84,6 +81,5 @@ class EventSchedulePage(tk.Frame):
             This page displays an event calendar"""
         DATABASE.modifyContestant(CURRENT_USER.userID, self.selectedCategory)
         DATABASE.commit()
-        #return to homepage
+        #Return to homepage
         self.controller.show_frame("HomePage")
-
