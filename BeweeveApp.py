@@ -21,8 +21,8 @@ class BeweeveApp(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
-        # This container stacks a bunch of frames on top of each other
-        # The one we want visible will be raised above the others
+        #This container stacks a bunch of frames on top of each other
+        #The one we want visible will be raised above the others
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
