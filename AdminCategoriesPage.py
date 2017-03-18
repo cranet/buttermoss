@@ -1,6 +1,6 @@
 """Admin Categories Page"""
 import Tkinter as tk
-from BeweeveMain import DATABASE #CURRENT_USER
+from BeWeave import DATABASE #CURRENT_USER
 
 class AdminCategoriesPage(tk.Frame):
     """ Author: Evan Pernu\n

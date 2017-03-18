@@ -1,6 +1,6 @@
 """Home Page"""
 import Tkinter as tk
-from BeweeveMain import CURRENT_USER #DATABASE
+from BeWeave import CURRENT_USER #DATABASE
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 

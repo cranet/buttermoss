@@ -1,6 +1,6 @@
 """Judges Page"""
 import Tkinter as tk
-from BeweeveMain import DATABASE #CURRENT_USER
+from BeWeave import DATABASE #CURRENT_USER
 
 class JudgesPage(tk.Frame):
     """ Author: Evan Pernu\n

@@ -1,6 +1,6 @@
 """Event Schedule Page"""
 import Tkinter as tk
-from BeweeveMain import DATABASE, CURRENT_USER
+from BeWeave import DATABASE, CURRENT_USER
 
 class EventSchedulePage(tk.Frame):
     """ Author: Evan Pernu\n

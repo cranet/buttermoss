@@ -1,6 +1,6 @@
 """Registration Page"""
 import Tkinter as tk
-from BeweeveMain import DATABASE, CURRENT_USER
+from BeWeave import DATABASE, CURRENT_USER
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
