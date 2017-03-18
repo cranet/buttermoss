@@ -2,8 +2,6 @@
 import Tkinter as tk
 from BeweeveMain import DATABASE #CURRENT_USER
 
-TITLE_FONT = ("Helvetica", 20, "bold")
-
 class AdminJudgesPage(tk.Frame):
     """ Author: Evan Pernu\n
     UW NetID: epernu\n
