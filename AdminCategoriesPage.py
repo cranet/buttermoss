@@ -1,8 +1,7 @@
-"""Admin Categories Class"""
+"""Admin Categories Page"""
 import Tkinter as tk
 from BeweeveMain import DATABASE #CURRENT_USER
 
-#Global font
 TITLE_FONT = ("Helvetica", 20, "bold")
 
 class AdminCategoriesPage(tk.Frame):

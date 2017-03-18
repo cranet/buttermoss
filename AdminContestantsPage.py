@@ -1,6 +1,6 @@
-import Tkinter as tk   
-
-from BeweeveMain import DATABASE, CURRENT_USER
+"""Admin Contestants Page"""
+import Tkinter as tk
+from BeweeveMain import DATABASE #CURRENT_USER
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
@@ -15,7 +15,7 @@ class AdminContestantsPage(tk.Frame):
         self.controller = controller
         self.selectedUser = 0
 
-        #initialize buttons
+        #Initialize buttons
         self.backButton = tk.Button(self, text='Back',
                                     command=lambda: controller.show_frame("AdminPage"))
         self.saveButton = tk.Button(self, text='Save Changes', command=lambda: self.saveChanges())
@@ -27,7 +27,7 @@ class AdminContestantsPage(tk.Frame):
         self.deleteButton.grid(row=7, column=4)
         self.saveButton.grid(row=7, column=5)
 
-        #initialize scrollable list
+        #Initialize scrollable list
         self.nameList = tk.Listbox(self, width=20, height=20, font=("Helvetica", 12))
         self.nameList.grid(row=2, column=1, rowspan=5)
         self.scrollbar = tk.Scrollbar(self, orient="vertical")
@@ -36,10 +36,10 @@ class AdminContestantsPage(tk.Frame):
         self.nameList.config(yscrollcommand=self.scrollbar.set)
         self.nameList.bind("<Button-1>", self.selectItem)
 
-        #add all categories to list
+        #Add all categories to list
         self.refresh()
 
-        #initialize selection display
+        #Initialize selection display
         self.label1 = tk.Label(self, text="ID:", font=("Helvetica", 10))
         self.label2 = tk.Label(self, text="Name:", font=("Helvetica", 10))
         self.label3 = tk.Label(self, text="Email:", font=("Helvetica", 10))
@@ -61,7 +61,7 @@ class AdminContestantsPage(tk.Frame):
         self.entry4.grid(row=5, column=4)
 
 
-    #display selection's information
+    #Display selection's information
     def selectItem(self, event):
         """ Author: Evan Pernu\n
             UW NetID: epernu\n
@@ -71,27 +71,28 @@ class AdminContestantsPage(tk.Frame):
         index = int(widget.curselection()[0])
         temp = DATABASE.getAllContestantUserIDs()
 
-        #clear all entry boxes
+        #Clear all entry boxes
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
-        #set all entry boxes to selection's values
+        #Set all entry boxes to selection's values
         self.selectedUser = DATABASE.getContestant(temp[index])
         self.info1.config(text=DATABASE.getContestant(temp[index])[0])
         self.entry2.insert(0, DATABASE.getContestant(temp[index])[1])
         self.entry3.insert(0, DATABASE.getContestant(temp[index])[2])
         self.entry4.insert(0, DATABASE.getContestant(temp[index])[3][0])
 
-    #writes the values of the entry boxes to the selection in database
+    #Writes the values of the entry boxes to the selection in database
     def saveChanges(self):
-         #add the entries to database. and to list.
-         #Grabbing ID from selected User, and grabbing information to be updated from box.BaseException
-         # if the user already exists, we modify. else it's a new contestant. 
-         #print "printing selected user before changing"
-         #print selectedUser
-        if (self.selectedUser == 0):
-                #adding new contestant. 
+        """ Author: Evan Pernu\n
+        UW NetID: epernu\n
+        Date: 3/11/2017\n"""
+         #Add the entries to database and to list
+         #Grabbing ID from selected User, and grabbing information to be updated from box
+         #If the user already exists, we modify else it's a new contestant
+        if self.selectedUser == 0:
+            #Adding new contestant
             entry = [self.entry2.get(), self.entry3.get(), self.entry4.get()]
             DATABASE.addContestant(entry)
             DATABASE.commit()
@@ -103,29 +104,36 @@ class AdminContestantsPage(tk.Frame):
         self.update()
         self.refresh()
 
-    #refreshes the list
+    #Refreshes the list
     def refresh(self):
-        #clear list
+        """ Author: Evan Pernu\n
+        UW NetID: epernu\n
+        Date: 3/11/2017\n"""
+
+        #Clear list
         self.nameList.delete(0, tk.END)
         temp = DATABASE.getAllContestantUserIDs()
         for id in temp:
             self.nameList.insert(tk.END, DATABASE.getContestant(id)[1])
-        self.update() #changes the look of the list.
+        self.update() #Changes the look of the list
 
-    #connects to new contestant so it should clear the current info.
+    #Connects to new contestant so it should clear the current info
     def addItem(self):
+        """ Author: Evan Pernu\n
+        UW NetID: epernu\n
+        Date: 3/11/2017\n"""
         self.selectedUser = 0
-        #print "clearing selected user"
-        #print selectedUser
         self.info1.config(text="")
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
-    #deletes the selection from list and database.
+    #Deletes the selection from list and database
     def delete(self):
+        """ Author: Evan Pernu\n
+        UW NetID: epernu\n
+        Date: 3/11/2017\n"""
         #parsing through the index
-        #temp = DATABASE.getAllContestantUserIDs()
         selected = map(int, self.nameList.curselection())
 
         pos = 0
@@ -133,12 +141,12 @@ class AdminContestantsPage(tk.Frame):
             idx = int(i) - pos
             self.nameList.delete(idx, idx)
             pos = pos + 1
-        #clear the forms.
+
+        #Clear the forms
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
-        #delete from database.
-        DATABASE.removeContestant(self.selectedUser[0]) 
+        #Delete from database
+        DATABASE.removeContestant(self.selectedUser[0])
         self.refresh()
-
