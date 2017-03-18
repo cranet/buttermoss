@@ -35,7 +35,7 @@ class RegistrationPage(tk.Frame):
         button.pack()
 
         backButton = tk.Button(self, text='Back',
-                               command=lambda: controller.show_frame("HomePage"))
+                               command=lambda: controller.show_frame("LoginPage"))
 
         backButton.pack()
 
@@ -58,6 +58,8 @@ class RegistrationPage(tk.Frame):
             label = tk.Label(self.pop, text='Your Unique ID is:\n'+str(CURRENT_USER.userID))
             label.pack(fill="x", pady=10)
             button = tk.Button(self.pop, text="Okay", command=lambda: self.frameChange())
+            self.nameText.set('')
+            self.emailText.set('')
             button.pack()
         else:
             self.errorPop = tk.Tk()

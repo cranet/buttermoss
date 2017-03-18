@@ -71,7 +71,7 @@ class EventSchedulePage(tk.Frame):
         self.info3.config(text=DATABASE.getCategory(temp[index])[2])
         self.info4.config(text=DATABASE.getCategory(temp[index])[3])
 
-        self.selectedCategory = DATABASE.getCategory(temp[index])[1]
+        self.selectedCategory = DATABASE.getCategory(temp[index])[0]
 
     #Registers the user for the selected category
     def registerForCategory(self):
@@ -79,6 +79,7 @@ class EventSchedulePage(tk.Frame):
             UW NetID: epernu\n
             Date: 3/14/2017\n
             This page displays an event calendar"""
+
         DATABASE.modifyContestant(CURRENT_USER.userID, self.selectedCategory)
         DATABASE.commit()
         #Return to homepage

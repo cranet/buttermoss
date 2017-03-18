@@ -18,8 +18,7 @@ class AdminContestantsPage(tk.Frame):
                                     command=lambda: controller.show_frame("AdminPage"))
         self.saveButton = tk.Button(self, text='Save Changes', command=lambda: self.saveChanges())
         self.addButton = tk.Button(self, text='New Contestant', command=lambda: self.addItem())
-        self.deleteButton = tk.Button(self, text='Delete Selected', command=lambda: self.delete())
-
+        self.deleteButton = tk.Button(self, text='Added To Judges', command=lambda: self.addTooJudges())
         self.backButton.grid(row=7, column=2)
         self.addButton.grid(row=7, column=3)
         self.deleteButton.grid(row=7, column=4)
@@ -126,13 +125,19 @@ class AdminContestantsPage(tk.Frame):
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
-    #Deletes the selection from list and database
-    def delete(self):
+    #Adds user to the Judge list and removes them from the contestant
+    def addTooJudges(self):
         """ Author: Evan Pernu\n
         UW NetID: epernu\n
-        Date: 3/11/2017\n"""
+        Date: 3/11/2017\n
+        Author: Alex Lambert\n
+        UW NetID: alamb25\n
+        Date: 3/17/2017\n"""
         #parsing through the index
         selected = map(int, self.nameList.curselection())
+        newJudge = DATABASE.getContestant(self.selectedUser[0])
+        #empty the judges schedule
+        newJudge[3] = ''
 
         pos = 0
         for i in selected:
@@ -141,10 +146,12 @@ class AdminContestantsPage(tk.Frame):
             pos = pos + 1
 
         #Clear the forms
+        self.info1.destroy()
         self.entry2.delete(0, tk.END)
         self.entry3.delete(0, tk.END)
         self.entry4.delete(0, tk.END)
 
         #Delete from database
         DATABASE.removeContestant(self.selectedUser[0])
+        DATABASE.addJudge(newJudge, self.selectedUser[0])
         self.refresh()

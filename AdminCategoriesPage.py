@@ -75,7 +75,6 @@ class AdminCategoriesPage(tk.Frame):
 
         #Getting selected category
         self.selectedCategory = DATABASE.getCategory(temp[index])
-        print self.selectedCategory
 
         #Set all entry boxes to selection's values
         self.info1.config(text=DATABASE.getCategory(temp[index])[0])
