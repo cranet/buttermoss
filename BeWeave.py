@@ -2,7 +2,7 @@
     UW NetID: alamb25\n
     Date: 3/11/17\n
     The main for the BeweeveApp"""
-from BeWeave import *
+from BeWeaveApp import *
 from Database import Database
 from User import User
 
@@ -14,5 +14,5 @@ if __name__ == "__main__":
     if not DATABASE.doesUserExist(12345):
         DATABASE.addAdmin([12345, 'Jeff Weiss', 'jawit@uw.edu'])
         DATABASE.commit()
-    app = BeWeeveApp()
+    app = BeWeaveApp()
     app.mainloop()
