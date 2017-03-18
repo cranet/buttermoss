@@ -1,8 +1,5 @@
-import Tkinter as tk   
-
-from BeweeveMain import DATABASE, CURRENT_USER
-
-TITLE_FONT = ("Helvetica", 20, "bold")
+"""Admin Page"""
+import Tkinter as tk
 
 class AdminPage(tk.Frame):
     """ Author: Evan Pernu\n
@@ -14,13 +11,13 @@ class AdminPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        button = tk.Button(self, text='Judges', width=10, 
-                               command=lambda: controller.show_frame("AdminJudgesPage"))
-        button2 = tk.Button(self, text='Categories', width=10, 
-                               command=lambda: controller.show_frame("AdminCategoriesPage"))
-        button3 = tk.Button(self, text='Contestants', width=10, 
-                               command=lambda: controller.show_frame("AdminContestantsPage"))
-        backButton = tk.Button(self, text='Logout', width=10, 
+        button = tk.Button(self, text='Judges', width=12,
+                           command=lambda: controller.show_frame("AdminJudgesPage"))
+        button2 = tk.Button(self, text='Categories', width=12,
+                            command=lambda: controller.show_frame("AdminCategoriesPage"))
+        button3 = tk.Button(self, text='Contestants', width=12,
+                            command=lambda: controller.show_frame("AdminContestantsPage"))
+        backButton = tk.Button(self, text='Logout', width=12,
                                command=lambda: controller.show_frame("LoginPage"))
 
         button.pack(pady=5)
