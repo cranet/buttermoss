@@ -1,8 +1,6 @@
-import Tkinter as tk   
-
-from BeweeveMain import DATABASE, CURRENT_USER
-
-TITLE_FONT = ("Helvetica", 20, "bold")
+"""Judges Page"""
+import Tkinter as tk
+from BeweeveMain import DATABASE #CURRENT_USER
 
 class JudgesPage(tk.Frame):
     """ Author: Evan Pernu\n
@@ -13,16 +11,15 @@ class JudgesPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        
+
         temp = DATABASE.getAllJudges()
-       
+
         listbox = tk.Listbox(self)
         listbox.pack()
         #adding name of judges
         for judges in temp:
             listbox.insert(tk.END, judges[1])
 
-        backButton = tk.Button(self, text='Back', 
+        backButton = tk.Button(self, text='Back',
                                command=lambda: controller.show_frame("HomePage"))
-                               
         backButton.pack()
