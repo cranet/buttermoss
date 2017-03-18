@@ -1,8 +1,7 @@
-
+"""Beweeve App"""
 import Tkinter as tk
 from LoginPage import LoginPage
 from HomePage import HomePage
-from registerContestPage import registerContestPage
 from RegistrationPage import RegistrationPage
 from JudgesPage import JudgesPage
 from EventSchedulePage import EventSchedulePage
@@ -10,8 +9,6 @@ from AdminJudgesPage import AdminJudgesPage
 from AdminCategoriesPage import AdminCategoriesPage
 from AdminContestantsPage import AdminContestantsPage
 from AdminPage import AdminPage
-
-TITLE_FONT = ("Helvetica", 20, "bold")
 
 class BeweeveApp(tk.Tk):
     """Author: Thomas Schmidt\n
@@ -24,8 +21,8 @@ class BeweeveApp(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
-        # This container stacks a bunch of frames on top of each other. 
-        # The one we want visible will be raised above the others.
+        # This container stacks a bunch of frames on top of each other
+        # The one we want visible will be raised above the others
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
@@ -33,7 +30,6 @@ class BeweeveApp(tk.Tk):
 
         self.title("BeWeeve")
         self.frames = {}
-        
         self.frames["LoginPage"] = LoginPage(parent=container, controller=self)
         self.frames["HomePage"] = HomePage(parent=container, controller=self)
         self.frames["RegistrationPage"] = RegistrationPage(parent=container, controller=self)
@@ -42,7 +38,8 @@ class BeweeveApp(tk.Tk):
         self.frames["AdminPage"] = AdminPage(parent=container, controller=self)
         self.frames["AdminJudgesPage"] = AdminJudgesPage(parent=container, controller=self)
         self.frames["AdminCategoriesPage"] = AdminCategoriesPage(parent=container, controller=self)
-        self.frames["AdminContestantsPage"] = AdminContestantsPage(parent=container, controller=self)
+        self.frames["AdminContestantsPage"] = AdminContestantsPage(parent=container,
+                                                                   controller=self)
 
         self.frames["LoginPage"].grid(row=0, column=0, sticky="nsew")
         self.frames["HomePage"].grid(row=0, column=0, sticky="nsew")
@@ -57,7 +54,6 @@ class BeweeveApp(tk.Tk):
         self.show_frame("LoginPage")
 
     def show_frame(self, page_name):
-        '''Show a frame for the given page name'''
+        """Show a frame for the given page name"""
         frame = self.frames[page_name]
         frame.tkraise()
-
