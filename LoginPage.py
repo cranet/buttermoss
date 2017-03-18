@@ -1,6 +1,6 @@
-import Tkinter as tk   
-
-from BeweeveMain import DATABASE, CURRENT_USER
+"""Login Page"""
+import Tkinter as tk
+from BeweeveMain import DATABASE #CURRENT_USER
 
 TITLE_FONT = ("Helvetica", 20, "bold")
 
@@ -25,23 +25,15 @@ class LoginPage(tk.Frame):
         self.entry_1 = tk.Entry(self)
         self.entry_1.pack(side="top")
 
-        button = tk.Button(self, text='Login', width="12", command=lambda: self.reg_Click())
+        button = tk.Button(self, text='Login', width="12", command=lambda: self.regClick())
         button.pack(pady=5)
 
         button_2 = tk.Button(self, text="Register", width="12",
-                             command=lambda: self.reg_Page())
+                             command=lambda: self.regPage())
         button_2.pack()
 
-
-
-
-
-        
-
-    def reg_Click(self):
-        """check login credentials"""
-        #Need non string exception
-
+    def regClick(self):
+        """Check login credentials"""
         #User input
         #Overrides default input
         if self.entry_1.get() != "":
@@ -56,16 +48,15 @@ class LoginPage(tk.Frame):
                 self.controller.show_frame('HomePage')  #if the user is a judge
             else:
                 self.error("FAILURE")
-
         else:
             self.error("PLEASE ENTER TEXT")
-            #controller.show_frame("RegistrationPage")
 
-    def reg_Page(self):
+    def regPage(self):
         """Bring up registration page"""
         self.controller.show_frame("RegistrationPage")
-    
+
     def error(self, string):
+        """Display error popup"""
         self.errorPop = tk.Tk()
         self.errorPop.wm_title("ERROR")
         self.errorLabel = tk.Label(self.errorPop, text=string)
