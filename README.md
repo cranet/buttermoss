@@ -44,3 +44,18 @@
 * Todd had part of the UML made pre-meeting, we collaboratively finished it
 * Fleshed out specific scenarios for some of our more obscure user stories (i.e. should a contestant make a new account to become a judge)
 * Deliverable 2
+
+#### Meeting 4 - 2/16/2017
+* Everyone was present
+* Planned check in 3
+* Created sequence diagrams
+* Fine tuned UI
+
+##### Meeting 5 - 2/28/2017
+* Finished deliverable 2
+* Divided workload
+
+###### MEeting 6 -3/2/2017
+* Did planning poker to guage workload
+* Divided all remaining coding
+* Set up Trello
