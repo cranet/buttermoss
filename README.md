@@ -55,7 +55,7 @@
 * Finished deliverable 2
 * Divided workload
 
-###### MEeting 6 -3/2/2017
+##### Meeting 6 -3/2/2017
 * Did planning poker to guage workload
 * Divided all remaining coding
 * Set up Trello
